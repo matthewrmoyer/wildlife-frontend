@@ -1,0 +1,15 @@
+@import url("reset.css");
+* {
+  box-sizing: border-box; }
+
+.welcome-container {
+  display: flex;
+  flex-direction: flex;
+  min-height: 100vh; }
+
+.welcome-heading {
+  flex-grow: 1;
+  color: #333333;
+  background-color: #ed7379; }
+
+/*# sourceMappingURL=style.css.map */
