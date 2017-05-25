@@ -6,9 +6,9 @@
 			templateUrl: './app/welcome/welcome.html'
 		})
 
-		WelcomeController.$inject = []
+		WelcomeController.$inject = ['postsService']
 
-		function WelcomeController(){
+		function WelcomeController(postsService){
 			const vm = this;
 			vm.$onInit = function(){
 				console.log('welcome-state init')
