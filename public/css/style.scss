@@ -15,10 +15,18 @@ $body-background-color: grey;
 .welcome-container{
 	display: flex;
 	flex-direction: flex;
-	min-height: 100vh;
+	// min-height: 100vh;
+	background-color: $red;
 }
 .welcome-heading{
-	flex-grow: 1;
+	// flex-grow: 1;
 	color: $dark-accent;
-	background-color: $red;
+}
+
+.wildlife-map-container{
+	background-color: $accent-blue;
+}
+
+#wildlife-map{ 
+	height: 180px; 
 }

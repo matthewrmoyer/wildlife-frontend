@@ -10,12 +10,19 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <!-- leaflet  -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+   integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+   integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+   crossorigin=""></script>
   </head>
   <body>
     
-    <welcome></welcome>
-    
-    
+    <welcome class = "col-xs-6"></welcome>
+    <map class = "col-xs-6"></map>
     
     <script src="/node_modules/angular/angular.min.js"></script>
     <script src="./app/app.module.js"></script>
@@ -25,6 +32,6 @@
     <script src="./app/services/posts.service.js"></script>
     <!-- controllers -->
     <script src="./app/welcome/welcome.controller.js"></script>
-    
+    <script src="./app/map/map.controller.js"></script>
   </body>
 </html>

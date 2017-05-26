@@ -5,11 +5,15 @@
 .welcome-container {
   display: flex;
   flex-direction: flex;
-  min-height: 100vh; }
+  background-color: #ed7379; }
 
 .welcome-heading {
-  flex-grow: 1;
-  color: #333333;
-  background-color: #ed7379; }
+  color: #333333; }
+
+.wildlife-map-container {
+  background-color: #1dc8d7; }
+
+#wildlife-map {
+  height: 180px; }
 
 /*# sourceMappingURL=style.css.map */
