@@ -10,12 +10,15 @@
 
 	function MapController(postsService) {
 		const vm = this;
+		vm.posts = postsService.posts;
+		vm.generateMarker = generateMarker;
 
 		vm.$onInit = function() {
 			console.log('map init')
+			vm.posts
 		}
 
-		vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, -105.6836], 13);
+		vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, 105.6836], 5);
 
 		vm.wildlifeMapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -23,6 +26,16 @@
 			id: 'mapbox.satellite',
 			accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 		}).addTo(vm.wildlifeMap);
+
+		function getPosts() {
+			return postsService.posts
+		}
+
+		function generateMarker(post, map){
+			L.marker([post.latitude, post.longitude]).addTo(map);
+			console.log('marker generated')
+		}
+
 	}
 
 })()

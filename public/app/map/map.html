@@ -2,3 +2,12 @@
 	<h1>MAP</h1>
 	<div id="wildlife-map"></div>
 </div>
+
+<div ng-repeat="post in $ctrl.posts">
+	<div>{{post.specie}}</div>
+	<div>{{post.latitude}}</div>
+	<div>{{post.longitude}}</div>
+	<br>
+
+	{{$ctrl.generateMarker(post, $ctrl.wildlifeMap)}}
+</div>
