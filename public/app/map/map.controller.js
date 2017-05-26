@@ -21,13 +21,10 @@
 			accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 		}).addTo(vm.wildlifeMap);
 
-		// vm.testMarker = L.marker([40.34, -105.68]).addTo(vm.wildlifeMap);
-		// vm.testMarker.bindPopup('<h1>GIGANTIC MOOSE</h1><p>theres like a million moose here!<p/>');
+
 		vm.$onInit = function() {
 			console.log('map init')
 		}
-
-
 
 		function generateMarker(post, map){
 			L.marker([post.latitude, post.longitude])
