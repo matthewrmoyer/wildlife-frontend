@@ -12,12 +12,6 @@
 		const vm = this;
 		vm.posts = postsService.posts;
 		vm.generateMarker = generateMarker;
-
-		vm.$onInit = function() {
-			console.log('map init')
-			vm.posts
-		}
-
 		vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, 105.6836], 5);
 
 		vm.wildlifeMapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -27,15 +21,25 @@
 			accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 		}).addTo(vm.wildlifeMap);
 
-		function getPosts() {
-			return postsService.posts
+		// vm.testMarker = L.marker([40.34, -105.68]).addTo(vm.wildlifeMap);
+		// vm.testMarker.bindPopup('<h1>GIGANTIC MOOSE</h1><p>theres like a million moose here!<p/>');
+		vm.$onInit = function() {
+			console.log('map init')
 		}
+
+
 
 		function generateMarker(post, map){
-			L.marker([post.latitude, post.longitude]).addTo(map);
-			console.log('marker generated')
+			L.marker([post.latitude, post.longitude])
+				.addTo(map)
+				.bindPopup(`
+					<h1>${post.specie}</h1>
+					<p> Spotted At: ${post.created_at}<p/>
+					<p>${post.description}<p/>
+					<img class = "popup-image" src=${post.image_url}>
+					<p> - ${post.user_name}</p>
+					`);
 		}
-
 	}
 
 })()
