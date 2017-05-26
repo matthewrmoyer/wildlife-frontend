@@ -3,11 +3,47 @@
 	<div id="wildlife-map"></div>
 </div>
 
+
+What specie would you like to see?
+<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.changeSpecieToFilterFor()" id = "specie-filter-input" class = "filter-input" type="text" placeholder= "Lion">
+
+
+
+
+<!-- generate all markers -->
+
+<!-- <div ng-repeat="post in $ctrl.posts | filter: {specie: $ctrl.specieToFilterFor}">
+	<div>{{post.specie}}</div>
+	<div>{{post.latitude}}</div>
+	<div>{{post.longitude}}</div>
+	<br>
+	{{$ctrl.generateAllMarker(post, $ctrl.wildlifeMap)}}
+</div> -->
+
+
+
+
 <div ng-repeat="post in $ctrl.posts">
 	<div>{{post.specie}}</div>
 	<div>{{post.latitude}}</div>
 	<div>{{post.longitude}}</div>
 	<br>
+		{{$ctrl.generateMooseMarker(post, $ctrl.wildlifeMap)}}
+</div>
 
-	{{$ctrl.generateMarker(post, $ctrl.wildlifeMap)}}
+<div ng-repeat="post in $ctrl.posts">
+	<div>{{post.specie}}</div>
+	<div>{{post.latitude}}</div>
+	<div>{{post.longitude}}</div>
+	<br>
+		{{$ctrl.generateElkMarker(post, $ctrl.wildlifeMap)}}
+</div>
+
+
+<div ng-repeat="post in $ctrl.posts">
+	<div>{{post.specie}}</div>
+	<div>{{post.latitude}}</div>
+	<div>{{post.longitude}}</div>
+	<br>
+		{{$ctrl.generateBobcatMarker(post, $ctrl.wildlifeMap)}}
 </div>
