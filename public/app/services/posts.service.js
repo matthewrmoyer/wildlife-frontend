@@ -12,7 +12,7 @@
 				response.data.forEach(element => {
 					vm.posts.push(element)
 				})
-			}, function(){
+			}, function() {
 				console.log('Error getting posts')
 			})
 	}

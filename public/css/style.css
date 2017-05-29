@@ -2,13 +2,41 @@
 * {
   box-sizing: border-box; }
 
-.welcome-container {
+.welcome-state-container, .welcome-state-button, .welcome-state-button-text-container {
   display: flex;
-  flex-direction: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.welcome-state-container {
+  min-height: 100vh;
   background-color: #ed7379; }
 
-.welcome-heading {
+.welcome-state-heading {
   color: #333333; }
+
+.welcome-state-button {
+  border: 2px solid #333333;
+  box-shadow: 0px 0px 5px #333333;
+  margin-top: calc(10px + 1vw);
+  margin-bottom: calc(10px + 1vw);
+  margin-right: calc(10px + 1vw);
+  margin-left: calc(10px + 1vw);
+  text-align: center;
+  height: calc(50px + 5vw);
+  user-select: none; }
+  .welcome-state-button:hover {
+    cursor: pointer; }
+  .welcome-state-button:active {
+    box-shadow: none; }
+
+.welcome-state-button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.welcome-state-button-text {
+  font-size: calc(20px + 1vw); }
 
 .wildlife-map-container {
   background-color: #1dc8d7; }

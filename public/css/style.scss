@@ -3,8 +3,6 @@
 * { box-sizing: border-box; }
 
 //colors
-
-
 $red: hsl(357, 77%, 69%);
 $background-grey: hsl(0, 0%, 85%);
 $text-grey: hsl(0, 0%, 28%);
@@ -12,15 +10,61 @@ $accent-blue: hsl(185, 76%, 48%);
 $dark-accent: hsl(0, 0%, 20%);
 $body-background-color: grey;
 
-.welcome-container{
+// sizes
+$welcome-state-button-font-size: calc(20px + 1vw);
+
+// placeholders and mixins
+%flex-column-centered{
 	display: flex;
-	flex-direction: flex;
-	// min-height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+// so cols that expand will wrap on overflow 
+// i.e.: 2 col-xs-12 col-sm-4 will still stack and unstack
+%flex-row-center-wrap{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.welcome-state-container{
+	@extend %flex-column-centered;
+	min-height: 100vh;
 	background-color: $red;
 }
-.welcome-heading{
+.welcome-state-heading{
 	// flex-grow: 1;
 	color: $dark-accent;
+}
+
+.welcome-state-button{
+	@extend %flex-column-centered;
+	border: 2px solid $dark-accent;
+	box-shadow: 0px 0px 5px $dark-accent;
+	margin-top: calc(10px + 1vw);
+	margin-bottom: calc(10px + 1vw);
+	margin-right: calc(10px + 1vw);
+	margin-left: calc(10px + 1vw);
+	text-align: center;
+	height: calc(50px + 5vw);
+	user-select: none;
+	&:hover{
+		cursor: pointer;
+	}
+	&:active{
+		box-shadow: none;
+	}
+}
+.welcome-state-button-container{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.welcome-state-button-text-container{
+	@extend %flex-column-centered;
+}
+.welcome-state-button-text{
+	font-size: $welcome-state-button-font-size;
 }
 
 .wildlife-map-container{
