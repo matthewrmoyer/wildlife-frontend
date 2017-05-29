@@ -18,23 +18,6 @@
 		vm.removeAllMarkers = removeAllMarkers;
 
 
-
-
-
-		// vm.generateAllMarker = generateAllMarker;
-
-
-		// vm.generateMooseMarker = generateMooseMarker;
-		// vm.hideMooseMarker = hideMooseMarker;
-
-
-		// vm.generateBobcatMarker = generateBobcatMarker;
-		// vm.hideBobcatMarker = hideBobcatMarker;
-
-
-		// vm.generateElkMarker = generateElkMarker;
-		// vm.hideElkMarker = hideElkMarker;
-
 		vm.specieToFilterFor;
 
 		vm.changeSpecieToFilterFor = changeSpecieToFilterFor;
@@ -50,25 +33,9 @@
 		}).addTo(vm.wildlifeMap);
 
 
-
-		// LAYERS TO FILTER ANIMALS
-		// vm.littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
-  //   	vm.denver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
-  //   	vm.aurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
-  //   	vm.golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
+		vm.allMarkerGroup = L.layerGroup().addTo(vm.wildlifeMap) 
 
 
-
-
-  //   	vm.citiesGroup = [vm.littleton, vm.denver, vm.aurora, vm.golden];
-  //   	vm.citiesLayer = L.layerGroup(vm.citiesGroup)
-  //   	vm.overlayMaps = {"Cities": vm.citiesLayer, /*"Moose": vm.mooseLayer*/}
-		// L.control.layers(vm.overlayMaps).addTo(vm.wildlifeMap);
-
-
-
-
-    	
 		vm.$onInit = function() {
 			console.log(vm.moosePosts)
 			console.log(vm.elkPosts)
@@ -76,24 +43,9 @@
 
 		}
 
-
-
-		// function generateAllMarker(post, map){
-		// 	L.marker([post.latitude, post.longitude])
-		// 		.addTo(vm.wildlifeMap)
-		// 		.bindPopup(`
-		// 			<h1>${post.specie}</h1>
-		// 			<p> Spotted At: ${post.created_at}<p/>
-		// 			<p>${post.description}<p/>
-		// 			<img class = "popup-image" src=${post.image_url}>
-		// 			<p> - ${post.user_name}</p>
-		// 			`);
-		// }
-
-
 		function generateMarker(post, map){
 			L.marker([post.latitude, post.longitude])
-				.addTo(vm.wildlifeMap)
+				.addTo(vm.allMarkerGroup)
 				.bindPopup(`
 					<h1>${post.specie}</h1>
 					<p> Spotted At: ${post.created_at}<p/>
@@ -104,61 +56,11 @@
 		}
 
 		function removeAllMarkers(){
-			vm.wildlifeMap.clearLayers()
+			vm.allMarkerGroup.clearLayers()
 		}
 
-		// function generateMooseMarker(post, map) {
-		// 	if(post.specie == 'Moose')
-		// 	L.marker([post.latitude, post.longitude])
-		// 		.addTo(vm.wildlifeMap)
-		// 		.bindPopup(`
-		// 			<h1>${post.specie}</h1>
-		// 			<p> Spotted At: ${post.created_at}<p/>
-		// 			<p>${post.description}<p/>
-		// 			<img class = "popup-image" src=${post.image_url}>
-		// 			<p> - ${post.user_name}</p>
-		// 			`);
-		// }
-
-		// function generateBobcatMarker(post, map) {
-		// 	if(post.specie == 'Bobcat')
-		// 	L.marker([post.latitude, post.longitude])
-		// 		.addTo(vm.wildlifeMap)
-		// 		.bindPopup(`
-		// 			<h1>${post.specie}</h1>
-		// 			<p> Spotted At: ${post.created_at}<p/>
-		// 			<p>${post.description}<p/>
-		// 			<img class = "popup-image" src=${post.image_url}>
-		// 			<p> - ${post.user_name}</p>
-		// 			`);
-		// }
-
-		// function generateElkMarker(post, map) {
-		// 	if(post.specie == 'Elk')
-		// 	L.marker([post.latitude, post.longitude])
-		// 		.addTo(vm.wildlifeMap)
-		// 		.bindPopup(`
-		// 			<h1>${post.specie}</h1>
-		// 			<p> Spotted At: ${post.created_at}<p/>
-		// 			<p>${post.description}<p/>
-		// 			<img class = "popup-image" src=${post.image_url}>
-		// 			<p> - ${post.user_name}</p>
-		// 			`);
-		// }
-
-		// function hideMooseMarker(){
-
-		// }
-		
-		// function hideBobcatMarker(){
-
-		// }
-		// function hideElkMarker(){
-
-		// }
-
-
 		function changeSpecieToFilterFor(){
+			vm.removeAllMarkers()
 			console.log(vm.specieToFilterFor)
 		}
 	}
