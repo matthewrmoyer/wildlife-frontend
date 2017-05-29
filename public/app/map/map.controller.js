@@ -37,10 +37,7 @@
 
 
 		vm.$onInit = function() {
-			console.log(vm.moosePosts)
-			console.log(vm.elkPosts)
-			console.log(vm.bobcatPosts)
-
+			console.log(vm.posts)
 		}
 
 		// populate allMarkerGroup
