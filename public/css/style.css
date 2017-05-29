@@ -9,8 +9,17 @@
   align-items: center; }
 
 .welcome-state-container {
-  min-height: 100vh;
-  background-color: #ed7379; }
+  min-height: 100vh; }
+  .welcome-state-container:after {
+    content: "";
+    background: url("../images/welcome-state-image.png");
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }
 
 .welcome-state-heading {
   color: #333333; }
@@ -24,7 +33,8 @@
   margin-left: calc(10px + 1vw);
   text-align: center;
   height: calc(50px + 5vw);
-  user-select: none; }
+  user-select: none;
+  background-color: white; }
   .welcome-state-button:hover {
     cursor: pointer; }
   .welcome-state-button:active {

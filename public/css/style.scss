@@ -20,8 +20,9 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 	justify-content: center;
 	align-items: center;
 }
+
 // so cols that expand will wrap on overflow 
-// i.e.: 2 col-xs-12 col-sm-4 will still stack and unstack
+// i.e.: 2 col-xs-12 col-sm-4 divs will still stack and unstack
 %flex-row-center-wrap{
 	display: flex;
 	justify-content: center;
@@ -30,8 +31,20 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 .welcome-state-container{
 	@extend %flex-column-centered;
 	min-height: 100vh;
-	background-color: $red;
+	// hacky background image opacity
+	&:after {
+  		content: "";
+  		background: url("../images/welcome-state-image.png");
+  		opacity: 0.4;
+  		top: 0;
+  		left: 0;
+  		bottom: 0;
+  		right: 0;
+  		position: absolute;
+  		z-index: -1;   
+	}
 }
+
 .welcome-state-heading{
 	// flex-grow: 1;
 	color: $dark-accent;
@@ -48,6 +61,7 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 	text-align: center;
 	height: calc(50px + 5vw);
 	user-select: none;
+	background-color: white;
 	&:hover{
 		cursor: pointer;
 	}
