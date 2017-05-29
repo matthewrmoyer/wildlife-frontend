@@ -20,18 +20,27 @@ What specie would you like to see?
 	{{$ctrl.generateAllMarker(post, $ctrl.wildlifeMap)}}
 </div> -->
 
+<div ng-repeat="post in $ctrl.posts | filter: {specie: $ctrl.specieToFilterFor}">
+	<div>{{post.specie}}</div>
+	<div>{{post.latitude}}</div>
+	<div>{{post.longitude}}</div>
+	<br>
+
+	
+	{{$ctrl.generateMarker(post, $ctrl.wildlifeMap) | filter: {specie: $ctrl.specieToFilterFor} }}
+</div>
 
 
-
+<!-- 
 <div ng-repeat="post in $ctrl.posts">
 	<div>{{post.specie}}</div>
 	<div>{{post.latitude}}</div>
 	<div>{{post.longitude}}</div>
 	<br>
 		{{$ctrl.generateMooseMarker(post, $ctrl.wildlifeMap)}}
-</div>
+</div> -->
 
-<div ng-repeat="post in $ctrl.posts">
+<!-- <div ng-repeat="post in $ctrl.posts">
 	<div>{{post.specie}}</div>
 	<div>{{post.latitude}}</div>
 	<div>{{post.longitude}}</div>
@@ -46,4 +55,4 @@ What specie would you like to see?
 	<div>{{post.longitude}}</div>
 	<br>
 		{{$ctrl.generateBobcatMarker(post, $ctrl.wildlifeMap)}}
-</div>
+</div> -->
