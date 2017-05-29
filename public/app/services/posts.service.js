@@ -28,9 +28,7 @@
 					}
 				})
 			}, function(){
-				console.log('jsadkhflas')
+				console.log('Error getting posts')
 			})
-
-			console.log(vm.posts)
 	}
 })()

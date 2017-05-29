@@ -14,15 +14,12 @@
 		vm.moosePosts = postsService.moosePosts;
 		vm.elkPosts = postsService.elkPosts;
 		vm.bobcatPosts = postsService.bobcatPosts;
-		vm.generateMarker = generateMarker;
+		vm.populateAllMarkerGroup = populateAllMarkerGroup;
 		vm.removeAllMarkers = removeAllMarkers;
-
-
 		vm.specieToFilterFor;
-
 		vm.changeSpecieToFilterFor = changeSpecieToFilterFor;
 
-
+		// generate map
 		vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, -105.6836], 7);
 		vm.wildlifeMapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -32,8 +29,11 @@
 			accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 		}).addTo(vm.wildlifeMap);
 
+		// create a marker group to populate will all posts
+		vm.allMarkerGroup = L.layerGroup()
 
-		vm.allMarkerGroup = L.layerGroup().addTo(vm.wildlifeMap) 
+		// add allMarkerGroup to map
+		vm.allMarkerGroup.addTo(vm.wildlifeMap) 
 
 
 		vm.$onInit = function() {
@@ -43,7 +43,8 @@
 
 		}
 
-		function generateMarker(post, map){
+		// populate allMarkerGroup
+		function populateAllMarkerGroup(post, map){
 			L.marker([post.latitude, post.longitude])
 				.addTo(vm.allMarkerGroup)
 				.bindPopup(`
