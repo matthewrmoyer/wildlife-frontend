@@ -30,6 +30,9 @@
 		vm.userLatitude;
 		vm.userLongitude;
 
+		vm.userMarker;
+		vm.userCircle;
+
 
 
 		vm.$onInit = function() {
@@ -50,7 +53,7 @@
 			}).addTo(vm.wildlifeMap);
 			// add allMarkerGroup to map
 			displayMarkerGroup(vm.allMarkerGroup, vm.wildlifeMap)
-			// vm.watchPosition;
+				// vm.watchPosition;
 		}
 
 		// populate allMarkerGroup array
@@ -77,17 +80,40 @@
 		function getAndWatchUserLocation(showPosition) {
 			if (navigator.geolocation) {
 				navigator.geolocation.watchPosition(showPosition)
+
 			} else {
 				alert('Geolocation is not supported on your device')
 			}
 		}
 
 		function showPosition(position) {
+
+			if(vm.userMarker){
+				vm.wildlifeMap.removeLayer(vm.userMarker)
+			}
+
+			if(vm.userCircle){
+				vm.wildlifeMap.removeLayer(vm.userCircle)
+			}
 			console.log("New Location")
 			vm.userLatitude = position.coords.latitude;
 			console.log(vm.userLatitude)
 			vm.userLongitude = position.coords.longitude;
 			console.log(vm.userLongitude)
+
+			vm.userMarker = L.marker([position.coords.latitude, position.coords.longitude])
+				.bindPopup("Your Location");
+
+			vm.userCircle = L.circle([position.coords.latitude, position.coords.longitude], {
+				color: 'red',
+				fillColor: 'blue',
+				fillOpacity: .5,
+				radius: 200
+			})
+
+			vm.wildlifeMap.addLayer(vm.userMarker)
+			vm.wildlifeMap.addLayer(vm.userCircle)
+
 		}
 
 	}
