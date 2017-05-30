@@ -14,7 +14,7 @@
 		vm.posts = postsService.posts;
 		vm.specieSet = postsService.specieSet
 		vm.specieArray = postsService.specieArray;
-		vm.specieToFilterFor;
+		vm.specieToFilterFor = postsService.specieToFilterFor;
 		vm.wildlifeMap;
 		vm.wildlifeMapTileLayer;
 		vm.allMarkerGroup = L.layerGroup() // create a marker group to populate with all posts
@@ -22,6 +22,7 @@
 		vm.populateAllMarkerGroup = populateAllMarkerGroup;
 		vm.removeAllMarkers = removeAllMarkers;
 		vm.displayMarkerGroup = displayMarkerGroup;
+		
 
 
 		vm.$onInit = function() {

@@ -8,7 +8,7 @@
 		const vm = this
 		vm.posts = []
 		vm.specieSet = new Set()
-		vm.specieArray = []
+		vm.specieArray = [];
 		// vm.specieSet.forEach(element => vm.specieArray.push(element))
 
 
@@ -17,14 +17,14 @@
 				response.data.forEach(element => {
 					vm.posts.push(element)
 					vm.specieSet.add(element.specie)
-					// .then(vm.specieArray.push(element.specie))
 				})
-				// .then(function(){
-				// 	vm.specieArray = Array.from(vm.specieSet)
-				// })
-			}, function() {
-				console.log('Error getting posts')
-			})
+			}, function(){
+				console.log('Error Getting Posts')
+			}).then(function(){
+					 vm.specieSet.forEach(element => {
+						vm.specieArray.push(element)
+					})
+				 })
 	}
 })()
 

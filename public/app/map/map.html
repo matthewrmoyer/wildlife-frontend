@@ -9,5 +9,5 @@ What specie would you like to see?
 	{{$ctrl.populateAllMarkerGroup(post, $ctrl.wildlifeMap) | filter: {specie: $ctrl.specieToFilterFor} }}
 </div>
 <select ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" > 
-	<option ng-repeat="post in $ctrl.posts">{{post.specie}}</option>
+	<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 </select>
