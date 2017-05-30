@@ -1,12 +1,23 @@
 <div class = "wildlife-map-container">
-	<select ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" >
-		<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
-	</select>
+
+	<button ng-click="$ctrl.centerOnUser()">Center on User</button>
+
+
 	<div class = "col-xs-12" id="wildlife-map"></div>
 	What specie would you like to see?
 	<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" class = "filter-input" type="text" placeholder= "Alligator"
 	>
+
+
+	<select ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" >
+		<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
+	</select>
+
+	
 	<div ng-repeat="post in $ctrl.posts | filter: {specie: $ctrl.specieToFilterFor}">
 		{{$ctrl.populateAllMarkerGroup(post, $ctrl.wildlifeMap) | filter: {specie: $ctrl.specieToFilterFor} }}
 	</div>
+
+
+
 </div>

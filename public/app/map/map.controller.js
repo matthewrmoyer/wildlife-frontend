@@ -25,7 +25,7 @@
 
 		vm.getAndWatchUserLocation = getAndWatchUserLocation;
 		vm.showPosition = showPosition;
-		// vm.watchPosition = watchPosition;
+		vm.centerOnUser = centerOnUser;
 
 		vm.userLatitude;
 		vm.userLongitude;
@@ -88,11 +88,11 @@
 
 		function showPosition(position) {
 
-			if(vm.userMarker){
+			if (vm.userMarker) {
 				vm.wildlifeMap.removeLayer(vm.userMarker)
 			}
 
-			if(vm.userCircle){
+			if (vm.userCircle) {
 				vm.wildlifeMap.removeLayer(vm.userCircle)
 			}
 			console.log("New Location")
@@ -108,12 +108,19 @@
 				color: 'red',
 				fillColor: 'blue',
 				fillOpacity: .5,
-				radius: 200
+				radius: 100
 			})
 
 			vm.wildlifeMap.addLayer(vm.userMarker)
 			vm.wildlifeMap.addLayer(vm.userCircle)
 
+		}
+
+		function centerOnUser() {
+			console.log('centering')
+			if (vm.userLatitude && vm.userLongitude) {
+				vm.wildlifeMap.setView([vm.userLatitude, vm.userLongitude], 20)
+			}
 		}
 
 	}
