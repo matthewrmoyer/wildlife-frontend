@@ -12,6 +12,8 @@
 		const vm = this;
 		// variables
 		vm.posts = postsService.posts;
+		vm.specieSet = postsService.specieSet
+		vm.specieArray = postsService.specieArray;
 		vm.specieToFilterFor;
 		vm.wildlifeMap;
 		vm.wildlifeMapTileLayer;
@@ -24,6 +26,9 @@
 
 		vm.$onInit = function() {
 			console.log(vm.posts)
+			console.log(vm.specieSet)
+			console.log(vm.specieArray)
+
 			// generate map
 			vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, -105.6836], 7);
 			vm.wildlifeMapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
