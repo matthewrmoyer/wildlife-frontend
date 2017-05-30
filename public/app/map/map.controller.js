@@ -33,6 +33,13 @@
 		vm.userMarker;
 		vm.userCircle;
 
+		vm.userIcon = L.icon({
+			iconUrl: '../images/user-icon.png',
+			iconSize: [50, 50]
+			// iconAnchor: [0, 0]
+			// popupAnchor:  [-3, -76]
+		})
+
 
 
 		vm.$onInit = function() {
@@ -101,13 +108,13 @@
 			vm.userLongitude = position.coords.longitude;
 			console.log(vm.userLongitude)
 
-			vm.userMarker = L.marker([position.coords.latitude, position.coords.longitude])
+			vm.userMarker = L.marker([position.coords.latitude, position.coords.longitude], {icon: vm.userIcon})
 				.bindPopup("Your Location");
 
 			vm.userCircle = L.circle([position.coords.latitude, position.coords.longitude], {
-				color: 'red',
-				fillColor: 'blue',
-				fillOpacity: .5,
+				color: 'green',
+				fillColor: 'green',
+				fillOpacity: .2,
 				radius: 100
 			})
 
