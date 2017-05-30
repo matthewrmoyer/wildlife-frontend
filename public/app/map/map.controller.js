@@ -18,17 +18,27 @@
 		vm.wildlifeMap;
 		vm.wildlifeMapTileLayer;
 		vm.allMarkerGroup = L.layerGroup() // create a marker group to populate with all posts
-		// functions
+			// functions
 		vm.populateAllMarkerGroup = populateAllMarkerGroup;
 		vm.removeAllMarkers = removeAllMarkers;
 		vm.displayMarkerGroup = displayMarkerGroup;
-		
+
+		vm.getAndWatchUserLocation = getAndWatchUserLocation;
+		vm.showPosition = showPosition;
+		// vm.watchPosition = watchPosition;
+
+		vm.userLatitude;
+		vm.userLongitude;
+
 
 
 		vm.$onInit = function() {
 			console.log(vm.posts)
 			console.log(vm.specieSet)
 			console.log(vm.specieArray)
+
+
+			vm.getAndWatchUserLocation(vm.showPosition)
 
 			// generate map
 			vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, -105.6836], 7);
@@ -40,6 +50,7 @@
 			}).addTo(vm.wildlifeMap);
 			// add allMarkerGroup to map
 			displayMarkerGroup(vm.allMarkerGroup, vm.wildlifeMap)
+			// vm.watchPosition;
 		}
 
 		// populate allMarkerGroup array
@@ -62,6 +73,23 @@
 		function removeAllMarkers(layerGroup) {
 			layerGroup.clearLayers()
 		}
+
+		function getAndWatchUserLocation(showPosition) {
+			if (navigator.geolocation) {
+				navigator.geolocation.watchPosition(showPosition)
+			} else {
+				alert('Geolocation is not supported on your device')
+			}
+		}
+
+		function showPosition(position) {
+			console.log("New Location")
+			vm.userLatitude = position.coords.latitude;
+			console.log(vm.userLatitude)
+			vm.userLongitude = position.coords.longitude;
+			console.log(vm.userLongitude)
+		}
+
 	}
 
 })()
