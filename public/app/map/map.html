@@ -1,9 +1,11 @@
 <div class = "wildlife-map-container">
-	<div class = "wildlife-map-menu-bar">
+
+	<div class = "wildlife-map-menu-bar col-xs-12">
 		<div class="wildlife-map-menu-bar-input-and-dropdown-container">
 			<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" class = "filter-input" type="text" placeholder= "Show All Animals"
 			>
 			<select ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" >
+				<option value="">All</option>
 				<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 			</select>
 		</div>
@@ -11,9 +13,9 @@
 			<img class = "location-image" src="../images/location-image.png" alt="<i class='fa fa-circle' aria-hidden='true'></i>">
 		</div>
 	</div>
-</div>
-<div class = "col-xs-12" id="wildlife-map"></div>
-<div ng-repeat="post in $ctrl.posts | filter: {specie: $ctrl.specieToFilterFor}">
-	{{$ctrl.populateAllMarkerGroup(post, $ctrl.wildlifeMap) | filter: {specie: $ctrl.specieToFilterFor} }}
-</div>
+
+	<div class = "col-xs-12" id="wildlife-map"></div>
+	<div ng-repeat="post in $ctrl.posts | filter: {specie: $ctrl.specieToFilterFor}">
+		{{$ctrl.populateAllMarkerGroup(post, $ctrl.wildlifeMap) | filter: {specie: $ctrl.specieToFilterFor} }}
+	</div>
 </div>

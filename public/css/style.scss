@@ -102,21 +102,20 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 
 // map compontent
 .wildlife-map-container{
-	// background-color: $accent-blue;
-	margin-top: 20px;
+	background-color: $accent-blue;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .wildlife-map-menu-bar{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	z-index: 99;
 	height: $wildlife-map-menu-bar-height;
 	background-color: rgba(255,255,255,.5);
-	margin-bottom: 50px;
-	.fa-circle{
-		font-size: calc(20px + 3vw);
-	}
+	margin-bottom: calc(#{$wildlife-map-menu-bar-height} * -1);
+	z-index: 999;
 }
 
 .wildlife-map-menu-bar-text-container{
@@ -124,9 +123,8 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 }
 
 #wildlife-map{ 
-	height: 500px; 
-	// margin-top: $wildlife-map-margin-top-height;
-	z-index: 1;
+	height: 200px; 
+	flex-grow: 1;
 }
 
 .location-image{
@@ -135,9 +133,6 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 }
 .popup-image{
 	width: 50%;
-}
-
-.leaflet-control-zoom{
 }
 
 // manipulator classes
