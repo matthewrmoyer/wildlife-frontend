@@ -1,4 +1,4 @@
-var cacheName = 'shell'
+var cacheName = 'shell';
 var shellFilesToCache = [
 	'/',
 	'./index.html',
@@ -16,6 +16,9 @@ var shellFilesToCache = [
 	'./node_modules/angular-ui-router/release/angular-ui-router.min.js',
 	'./app/app.config.js',
 	'./app/app.module.js',
+
+	'./node_modules/localforage/dist/localforage.js',
+	'./node_modules/angular-localforage/dist/angular-localforage.js',
 
 	'./app/welcome/welcome.html',
 	'./app/welcome/welcome.controller.js'
@@ -57,3 +60,6 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+
+

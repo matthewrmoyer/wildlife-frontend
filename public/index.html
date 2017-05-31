@@ -21,22 +21,21 @@
     </head>
     <body>
 
-    
+    <h1>12341234124314</h1>
       <ui-view></ui-view>
 
 
-
-
-      <!-- register service worker -->
+    <!-- register service worker -->
       <script>
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker
              .register('./service-worker.js')
              .then(function(){ 
-                console.log('Service Worker Registered'); 
+                console.log('Service Worker Registered!!!!!!!!!!'); 
               });
           }      
       </script>
+
 
 
 
@@ -48,8 +47,11 @@
       <script src="./app/app.config.js"></script>
 
 
+  
+
+
+
       <!-- local forage -->
-      <!-- <script src="https://cdn.rawgit.com/mozilla/localForage/master/dist/localforage.js"></script> -->
       <!-- put regular localforage above angular local forage -->
       <script src="./node_modules/localforage/dist/localforage.js"></script>
       <script src="./node_modules/angular-localforage/dist/angular-localforage.js"></script>
@@ -74,5 +76,7 @@
       <!-- controllers -->
       <script src="./app/welcome/welcome.controller.js"></script>
       <script src="./app/map/map.controller.js"></script>
+
+
     </body>
   </html>
