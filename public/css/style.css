@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box; }
 
-.welcome-state-container, .welcome-state-button, .welcome-state-button-text-container {
+.welcome-state-container, .welcome-state-button, .welcome-state-button-text-container, .wildlife-map-menu-bar-text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,10 +49,26 @@
   font-size: calc(20px + 1vw); }
 
 .wildlife-map-container {
-  background-color: #1dc8d7; }
+  margin-top: 20px; }
+
+.wildlife-map-menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+  height: calc(40px + 2vh);
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 50px; }
+  .wildlife-map-menu-bar .fa-circle {
+    font-size: calc(20px + 3vw); }
 
 #wildlife-map {
-  height: 500px; }
+  height: 500px;
+  z-index: 1; }
+
+.location-image {
+  height: calc(40px + 2vh);
+  cursor: pointer; }
 
 .popup-image {
   width: 50%; }

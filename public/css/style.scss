@@ -13,6 +13,10 @@ $body-background-color: grey;
 // sizes
 $welcome-state-button-font-size: calc(20px + 1vw);
 
+$wildlife-map-menu-bar-height: calc(40px + 2vh);
+$wildlife-map-margin-top-height: calc(-40px + -2vh);
+
+
 // placeholders and mixins
 %flex-column-centered{
 	display: flex;
@@ -69,6 +73,8 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 		box-shadow: none;
 	}
 }
+
+// welcome state component
 .welcome-state-button-container{
 	display: flex;
 	justify-content: center;
@@ -77,20 +83,49 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 .welcome-state-button-text-container{
 	@extend %flex-column-centered;
 }
+
 .welcome-state-button-text{
 	font-size: $welcome-state-button-font-size;
 }
 
+// map compontent
 .wildlife-map-container{
-	background-color: $accent-blue;
+	// background-color: $accent-blue;
+	margin-top: 20px;
+}
+
+.wildlife-map-menu-bar{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 99;
+	height: $wildlife-map-menu-bar-height;
+	background-color: rgba(255,255,255,.5);
+	margin-bottom: 50px;
+	.fa-circle{
+		font-size: calc(20px + 3vw);
+	}
+}
+
+.wildlife-map-menu-bar-text-container{
+	@extend %flex-column-centered;
 }
 
 #wildlife-map{ 
 	height: 500px; 
+	// margin-top: $wildlife-map-margin-top-height;
+	z-index: 1;
 }
 
+.location-image{
+	height: $wildlife-map-menu-bar-height;
+	cursor: pointer;
+}
 .popup-image{
 	width: 50%;
+}
+
+.leaflet-control-zoom{
 }
 
 // manipulator classes
