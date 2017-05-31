@@ -37,13 +37,33 @@
               });
           }      
       </script> -->
+
+
+
+
+
       <!-- angular -->
-      <script src="/node_modules/angular/angular.min.js"></script>
+      <script src="./node_modules/angular/angular.min.js"></script>
       <script src="./app/app.module.js"></script>
       <script src="./app/app.config.js"></script>
-      <!-- ui-router -->
-<!--       <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script> -->
 
+
+      <!-- local forage -->
+      <!-- <script src="https://cdn.rawgit.com/mozilla/localForage/master/dist/localforage.js"></script> -->
+      <!-- put regular localforage above angular local forage -->
+      <script src="./node_modules/localforage/dist/localforage.js"></script>
+      <script src="./node_modules/angular-localforage/dist/angular-localforage.js"></script>
+      <script type="text/javascript">
+        localforage.setDriver([
+          localforage.INDEXEDDB,
+          localforage.WEBSQL,
+          localforage.LOCALSTORAGE
+         ]).then(function(){console.log('local forage setDriver success')}, function(){console.log('ERROR: LOCALFORAGE DRIVER NOT SET')})
+      </script>
+
+
+      <!-- ui-router -->
+      <!--       <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script> -->
       <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
       <!-- ngAnimate -->
