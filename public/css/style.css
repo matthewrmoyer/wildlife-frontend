@@ -20,6 +20,15 @@
     right: 0;
     position: absolute;
     z-index: -1; }
+  .welcome-state-container a {
+    color: black;
+    text-decoration: none;
+    height: calc(50px + 5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%; }
 
 .welcome-state-heading {
   color: #333333; }
@@ -34,7 +43,8 @@
   text-align: center;
   height: calc(50px + 5vw);
   user-select: none;
-  background-color: white; }
+  background-color: white;
+  padding: 0; }
   .welcome-state-button:hover {
     cursor: pointer; }
   .welcome-state-button:active {

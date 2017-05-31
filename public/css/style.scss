@@ -47,6 +47,16 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
   		position: absolute;
   		z-index: -1;   
 	}
+		a{
+		color: black;
+		text-decoration: none;
+		height: calc(50px + 5vw);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+	}
 }
 
 .welcome-state-heading{
@@ -66,6 +76,8 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 	height: calc(50px + 5vw);
 	user-select: none;
 	background-color: white;
+	padding: 0;
+
 	&:hover{
 		cursor: pointer;
 	}

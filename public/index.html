@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 
+
     <!-- leaflet  -->
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
@@ -18,15 +19,24 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
    integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
    crossorigin=""></script>
+
+   <base href="/">
+
   </head>
   <body>
-    
-    <welcome class = "col-xs-12"></welcome>
-    <map class = "col-xs-12"></map>
-    
+
+
+    <ui-view></ui-view>
+
+
+
     <script src="/node_modules/angular/angular.min.js"></script>
     <script src="./app/app.module.js"></script>
     <script src="./app/app.config.js"></script>
+
+
+    <!-- ui-router -->
+    <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
     
     <!-- services -->
     <script src="./app/services/posts.service.js"></script>
