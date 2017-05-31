@@ -13,11 +13,12 @@ var shellFilesToCache = [
 	'./images/location-image.png',
 
 	'./node_modules/angular/angular.min.js',
+	'./node_modules/angular-ui-router/release/angular-ui-router.min.js',
 	'./app/app.config.js',
 	'./app/app.module.js',
 
-	'/app/welcome/welcome.html',
-	'/app/welcome/welcome.controller.js'
+	'./app/welcome/welcome.html',
+	'./app/welcome/welcome.controller.js'
 ]
 
 self.addEventListener('install', (e) => {
