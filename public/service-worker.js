@@ -63,7 +63,7 @@ self.addEventListener('fetch', function(e) {
 	console.log('[ServiceWorker] Fetch', e.request.url);
 
 	// requesting posts / data from backend
-	// this is 1 of 2 requets being made, this request to the backend, there is another request being made to the cache in the DLSFKJASDLFA file in the ADSLFASJFL function
+	// this is 1 of 2 requets being made, this request to the backend, there is another request being made to the cache in the postservice
 	var dataUrl = 'https://wildlife-backend.herokuapp.com/posts';
 	if (e.request.url.indexOf(dataUrl) > -1) {
 		e.respondWith(

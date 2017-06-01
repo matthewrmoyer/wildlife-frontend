@@ -43,7 +43,7 @@
 
 
 		// Fetch the latest data.
-		// this is intercepted by the service worker which caches the response
+		// this is intercepted by the service worker which caches the response, so that the cache is populated with the data from the most recent requests
 		$http.get(vm.allPostsUrl)
 			.then((response) => {
 				response.data.forEach(element => {
