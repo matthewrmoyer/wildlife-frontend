@@ -39,6 +39,7 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 	&:after {
   		content: "";
   		background: url("../images/welcome-state-image.png");
+  		background-size: cover;
   		opacity: 0.4;
   		top: 0;
   		left: 0;

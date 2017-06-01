@@ -13,6 +13,7 @@
   .welcome-state-container:after {
     content: "";
     background: url("../images/welcome-state-image.png");
+    background-size: cover;
     opacity: 0.4;
     top: 0;
     left: 0;
