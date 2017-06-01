@@ -1,4 +1,5 @@
 var cacheName = 'shell';
+var dataCacheName = 'dataCache'
 var shellFilesToCache = [
 	'/',
 	'./index.html',
@@ -59,13 +60,33 @@ self.addEventListener('activate', (e) => {
 })
 
 self.addEventListener('fetch', function(e) {
-  console.log('[ServiceWorker] Fetch', e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
+	console.log('[ServiceWorker] Fetch', e.request.url);
+
+	// requesting posts / data from backend
+	// this is 1 of 2 requets being made, this request to the backend, there is another request being made to the cache in the DLSFKJASDLFA file in the ADSLFASJFL function
+	var dataUrl = 'https://wildlife-backend.herokuapp.com/posts';
+	if (e.request.url.indexOf(dataUrl) > -1) {
+		e.respondWith(
+			caches.open(dataCacheName).then(cache => {
+				// get response from network
+				return fetch(e.request).then(response => {
+					console.log(e.request, response)
+					// put request url and clone of response from network in cache
+					cache.put(e.request.url, response.clone())
+					// return network response
+					return response
+				})
+			})
+		)
+
+		// app is asking for app shell, so use cache with network as fallback
+	} else {
+		e.respondWith(
+			caches.match(e.request).then(function(response) {
+				return response || fetch(e.request);
+			})
+		)
+	}
+
+
 });
-
-
-
