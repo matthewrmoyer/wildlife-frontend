@@ -21,7 +21,13 @@ var shellFilesToCache = [
 	'./node_modules/angular-localforage/dist/angular-localforage.js',
 
 	'./app/welcome/welcome.html',
-	'./app/welcome/welcome.controller.js'
+	'./app/welcome/welcome.controller.js',
+
+	'./app/services/posts.service.js',
+
+	'./app/map/map.html',
+	'./app/map/map.controller.js'
+
 ]
 
 self.addEventListener('install', (e) => {
