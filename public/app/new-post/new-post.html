@@ -1,0 +1,26 @@
+<h1>NEW POST HTML</h1>
+<div class = "new-post-container">
+	<form novalidate="" name = "$ctrl.newPostForm" ng-submit = "$ctrl.newPost()">
+		<input type="text" name = "newPostLatitudeInput" ng-model = newPost.latitude placeholder="Your Latitude">
+		<input type="text" name = "newPostLongitudeInput" ng-model = newPost.longitude placeholder="Your longitude">
+		<select ng-model="newPost.specie" name = "newPostSpecieSelect">
+			<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
+		</select>
+		<input ng-model = "newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
+		>
+
+		<input ng-model = "newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
+
+		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="newPost.description" placeholder="Description"></textarea>
+
+		<input ng-model = "newPost.image" name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
+
+
+		<div>{{newPost}}</div>
+	</form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
