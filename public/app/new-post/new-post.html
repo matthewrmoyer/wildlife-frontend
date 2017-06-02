@@ -1,22 +1,30 @@
 <h1>NEW POST HTML</h1>
+		<div>{{$ctrl.newPost}}</div>
+
+
+
 <div class = "new-post-container">
-	<form novalidate="" name = "$ctrl.newPostForm" ng-submit = "$ctrl.newPost()">
-		<input type="text" name = "newPostLatitudeInput" ng-model = newPost.latitude placeholder="Your Latitude">
-		<input type="text" name = "newPostLongitudeInput" ng-model = newPost.longitude placeholder="Your longitude">
-		<select ng-model="newPost.specie" name = "newPostSpecieSelect">
+	<form novalidate class="new-post-form" name = "$ctrl.newPostForm" ng-submit = "$ctrl.newPost()">
+		<div class = "lat-long-container">
+			<input type="text" name = "newPostLatitudeInput" ng-model = $ctrl.newPost.latitude placeholder="Your Latitude">
+			<input type="text" name = "newPostLongitudeInput" ng-model = $ctrl.newPost.longitude placeholder="Your longitude">
+		</div>
+		
+		<select ng-model="$ctrl.newPost.specie" name = "newPostSpecieSelect" ng-change="$ctrl.getSelectedSpecie()">
+			<option value="">Not Listed</option>
+			<option disabled value="">Select Specie</option>
 			<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 		</select>
-		<input ng-model = "newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
+
+		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
 		>
 
-		<input ng-model = "newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
+		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
 
-		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="newPost.description" placeholder="Description"></textarea>
+		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description"></textarea>
+		
+		<input ng-model = "$ctrl.newPost.image" name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
 
-		<input ng-model = "newPost.image" name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
-
-
-		<div>{{newPost}}</div>
 	</form>
 </div>
 <br>

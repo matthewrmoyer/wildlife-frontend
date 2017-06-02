@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box; }
 
-.welcome-state-container, .welcome-state-button, .welcome-state-button-text-container, .wildlife-map-menu-bar-text-container {
+.welcome-state-container, .welcome-state-button, .welcome-state-button-text-container, .wildlife-map-menu-bar-text-container, .new-post-container, .new-post-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,6 +84,42 @@
 
 .popup-image {
   width: 50%; }
+
+.new-post-container {
+  background-color: grey;
+  min-height: 100vh; }
+
+.new-post-form {
+  margin-top: 20px;
+  flex-grow: 1;
+  justify-content: space-between; }
+  .new-post-form .lat-long-container {
+    display: flex;
+    justify-content: center; }
+    .new-post-form .lat-long-container input {
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 40vw; }
+  .new-post-form input {
+    width: 90vw;
+    height: calc(40px + 2vh);
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #1dc8d7; }
+    .new-post-form input:focus {
+      outline: none;
+      border-color: #A239CA; }
+  .new-post-form textarea {
+    width: 90vw;
+    height: calc(40px + 2vh);
+    text-align: center;
+    border: 2px solid #1dc8d7;
+    height: 300px; }
+    .new-post-form textarea:focus {
+      outline: none;
+      border-color: #A239CA; }
 
 .display-none-class {
   display: none; }

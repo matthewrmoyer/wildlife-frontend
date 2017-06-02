@@ -16,6 +16,8 @@ $welcome-state-button-font-size: calc(20px + 1vw);
 $wildlife-map-menu-bar-height: calc(40px + 2vh);
 $wildlife-map-margin-top-height: calc(-40px + -2vh);
 
+$new-post-input-height: calc(40px + 2vh);
+
 
 // placeholders and mixins
 %flex-column-centered{
@@ -135,7 +137,56 @@ $wildlife-map-margin-top-height: calc(-40px + -2vh);
 .popup-image{
 	width: 50%;
 }
-// ngAnimate classes
+// new post form
+.new-post-container{
+	background-color: grey;
+	@extend %flex-column-centered;
+	min-height: 100vh;
+}
+
+.new-post-form{
+	@extend %flex-column-centered;
+	margin-top: 20px;
+	flex-grow: 1;
+	justify-content: space-between;
+	// background-color: red;
+
+	.lat-long-container{
+		display: flex;
+		justify-content: center;
+		input{
+			margin-left: 10px;
+			margin-right: 10px;
+			width: 40vw;
+		}
+	}
+	input{
+		width: 90vw;
+		height: $new-post-input-height;
+		text-align: center;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-bottom: 2px solid $accent-blue; 
+		&:focus{
+			outline: none;
+			border-color: #A239CA;
+		}
+	}
+
+	textarea{
+		width: 90vw;
+		height: $new-post-input-height;
+		text-align: center;
+		border: 2px solid $accent-blue; 
+		height: 300px;
+		&:focus{
+			outline: none;
+			border-color: #A239CA;
+		}
+	}
+}
+
 
 // manipulator classes
 .display-none-class{
