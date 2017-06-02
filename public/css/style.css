@@ -86,7 +86,7 @@
   width: 50%; }
 
 .new-post-container {
-  background-color: grey;
+  background-color: #e6e6e6;
   min-height: 100vh; }
 
 .new-post-form {
@@ -107,19 +107,23 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid #1dc8d7; }
+    border-bottom: 3px solid black; }
     .new-post-form input:focus {
       outline: none;
-      border-color: #A239CA; }
-  .new-post-form textarea {
+      border-bottom: 2px solid #1dc8d7; }
+  .new-post-form select {
     width: 90vw;
     height: calc(40px + 2vh);
+    text-align-last: center;
+    background-color: white; }
+  .new-post-form textarea {
+    width: 90vw;
     text-align: center;
-    border: 2px solid #1dc8d7;
+    border: 3px solid black;
     height: 300px; }
     .new-post-form textarea:focus {
       outline: none;
-      border-color: #A239CA; }
+      border-color: #1dc8d7; }
 
 .display-none-class {
   display: none; }

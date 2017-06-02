@@ -1,34 +1,20 @@
-<h1>NEW POST HTML</h1>
-		<div>{{$ctrl.newPost}}</div>
-
-
-
+<!-- <div>{{$ctrl.newPost}}</div> -->
 <div class = "new-post-container">
 	<form novalidate class="new-post-form" name = "$ctrl.newPostForm" ng-submit = "$ctrl.newPost()">
-		<div class = "lat-long-container">
-			<input type="text" name = "newPostLatitudeInput" ng-model = $ctrl.newPost.latitude placeholder="Your Latitude">
-			<input type="text" name = "newPostLongitudeInput" ng-model = $ctrl.newPost.longitude placeholder="Your longitude">
-		</div>
 		
-		<select ng-model="$ctrl.newPost.specie" name = "newPostSpecieSelect" ng-change="$ctrl.getSelectedSpecie()">
+		<select class = "new-post-form-select" ng-model="$ctrl.newPost.specie" name = "newPostSpecieSelect" ng-change="$ctrl.getSelectedSpecie()">
 			<option value="">Not Listed</option>
 			<option disabled value="">Select Specie</option>
 			<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 		</select>
-
 		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
 		>
-
 		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
-
 		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description"></textarea>
-		
+		<div class = "lat-long-container">
+			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" placeholder="Your Latitude">
+			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" placeholder="Your Longitude">
+		</div>
 		<input ng-model = "$ctrl.newPost.image" name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
-
 	</form>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>

@@ -139,7 +139,7 @@ $new-post-input-height: calc(40px + 2vh);
 }
 // new post form
 .new-post-container{
-	background-color: grey;
+	background-color: darken(white,10);
 	@extend %flex-column-centered;
 	min-height: 100vh;
 }
@@ -167,22 +167,29 @@ $new-post-input-height: calc(40px + 2vh);
 		border-top: none;
 		border-left: none;
 		border-right: none;
-		border-bottom: 2px solid $accent-blue; 
+		border-bottom: 3px solid black; 
 		&:focus{
 			outline: none;
-			border-color: #A239CA;
+			// border-color: #A239CA;
+			border-bottom: 2px solid $accent-blue;
 		}
+	}
+
+	select{
+		width: 90vw;
+		height: $new-post-input-height;
+		text-align-last: center;
+		background-color: white;
 	}
 
 	textarea{
 		width: 90vw;
-		height: $new-post-input-height;
 		text-align: center;
-		border: 2px solid $accent-blue; 
+		border: 3px solid black; 
 		height: 300px;
 		&:focus{
 			outline: none;
-			border-color: #A239CA;
+			border-color: $accent-blue;
 		}
 	}
 }
