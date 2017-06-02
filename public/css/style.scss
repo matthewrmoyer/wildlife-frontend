@@ -137,6 +137,12 @@ $new-post-input-height: calc(40px + 2vh);
 .popup-image{
 	width: 50%;
 }
+
+.new-post-link{
+	background-color: white;
+	border: 2px solid black;
+	color: black;
+}
 // new post form
 .new-post-container{
 	background-color: darken(white,10);

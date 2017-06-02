@@ -19,6 +19,11 @@
 				url: '/map',
 				component: 'map',
 			})
+			.state({
+				name: 'newPost',
+				url: '/newPost',
+				component: 'newPost',
+			})
 	}
 
 }());
