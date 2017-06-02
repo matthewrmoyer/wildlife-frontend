@@ -68,6 +68,7 @@
 .wildlife-map-menu-bar {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   height: calc(40px + 2vh);
   background-color: rgba(255, 255, 255, 0.5);
@@ -88,7 +89,10 @@
 .new-post-link {
   background-color: white;
   border: 2px solid black;
-  color: black; }
+  color: black;
+  width: calc(25px + 2vw);
+  text-align: center;
+  line-height: 1.5; }
 
 .new-post-container {
   background-color: #e6e6e6;

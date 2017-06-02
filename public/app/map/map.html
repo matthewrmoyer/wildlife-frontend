@@ -1,5 +1,8 @@
 <div class = "wildlife-map-container">
 	<div class = "wildlife-map-menu-bar col-xs-12">
+
+			<a class = "new-post-link" ui-sref="newPost">+</a>
+
 		<div class="wildlife-map-menu-bar-input-and-dropdown-container">
 			<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" class = "filter-input" type="text" placeholder= "Show All Animals"
 			>
@@ -7,8 +10,10 @@
 				<option value="">All</option>
 				<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 			</select>
-			<a class = "new-post-link" ui-sref="newPost">New Post</a>
 		</div>
+
+		
+
 		<div ng-click="$ctrl.centerOnUser()">
 			<img class = "location-image" src="../images/location-image.png" alt="<i class='fa fa-circle' aria-hidden='true'></i>">
 		</div>
