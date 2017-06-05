@@ -24,6 +24,11 @@
 
 		vm.submitPost = submitPost
 		vm.postImage = postsService.postImage
+		vm.postedImageId = postsService.postedImageId
+
+		vm.createNewPost = createNewPost
+		vm.sendNewPost = postsService.sendNewPost
+
 
 		vm.$onInit = function() {
 			console.log('new post controller init')
@@ -61,13 +66,27 @@
 		}
 
 		function submitPost() {
-			console.log('hitting submit post')
 			var img = document.getElementById('newPostPhotoInput').files[0]
-			vm.postImage(img)
+			vm.postImage(img).then(vm.createNewPost)
 
-			// console.log(vm.newPost)
-			// let img = vm.newPost.image
-			// console.log(img)
+		}
+
+		function createNewPost(){
+
+			var objToPost = {}
+			objToPost.user_email = "USEREMAILHARDCODED@GMAIL.COM",
+			objToPost.user_name ="USERNAMEHARDCODED",
+
+			objToPost.latitude = vm.userLatitude,
+			objToPost.longitude = vm.userLongitude,
+			objToPost.specie = vm.newPost.specie,
+			// trail: vm.newPost.trail,
+			objToPost.description = vm.newPost.description,
+			objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId 
+
+
+			console.log(objToPost)
+			vm.sendNewPost(objToPost)
 		}
 	}
 

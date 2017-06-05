@@ -12,6 +12,9 @@
 		vm.allPostsUrl = 'https://wildlife-backend.herokuapp.com/posts'
 
 		vm.postImage = postImage
+		vm.postedImageId;
+
+		vm.sendNewPost = sendNewPost
 			// cache logic
 		if ('caches' in window) {
 			caches.match(vm.allPostsUrl).then(response => {
@@ -65,20 +68,24 @@
 			let formData = new FormData()
 			formData.append("image", img)
 			console.log(formData)
-			$http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
+			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
 				headers: {"Content-Type": undefined},
 				transformRequest: angular.identity
 			}).then(function successCallback(response) {
-				// this callback will be called asynchronously
-				// when the response is available
-				console.log(formData)
-				console.log('ID:  ')
-				console.log(response)
+				vm.postedImageId = response.data
+				console.log(vm.postedImageId)
 			}, function errorCallback(response) {
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
 				console.log("ERROR")
-			});
+			}).then(function(){
+				console.log('99999999999999999999999')
+			})
+		}
+
+		function sendNewPost(objToPost) {
+			$http.post('https://wildlife-backend.herokuapp.com/posts', objToPost)
+				.then(response => {
+					console.log(response)
+				})
 		}
 	}
 })()
