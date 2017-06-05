@@ -21,6 +21,10 @@
 		vm.hideNewSpecieInput = hideNewSpecieInput
 		vm.showNewSpecieInput = showNewSpecieInput
 		vm.getSelectedSpecie = getSelectedSpecie
+
+		vm.submitPost = submitPost
+		vm.postImage = postsService.postImage
+
 		vm.$onInit = function() {
 			console.log('new post controller init')
 			vm.getUserLocation()
@@ -49,11 +53,21 @@
 			}
 		}
 
-		function setUserLocation(position){
+		function setUserLocation(position) {
 			vm.userLatitude = position.coords.latitude
 			vm.userLongitude = position.coords.longitude
-			console.log(vm.userLatitude) 
+			console.log(vm.userLatitude)
 			console.log(vm.userLongitude)
+		}
+
+		function submitPost() {
+			console.log('hitting submit post')
+			var img = document.getElementById('newPostPhotoInput').files[0]
+			vm.postImage(img)
+
+			// console.log(vm.newPost)
+			// let img = vm.newPost.image
+			// console.log(img)
 		}
 	}
 

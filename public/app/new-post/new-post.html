@@ -1,6 +1,6 @@
 <!-- <div>{{$ctrl.newPost}}</div> -->
 <div class = "new-post-container">
-	<form novalidate class="new-post-form" name = "$ctrl.newPostForm" ng-submit = "$ctrl.newPost()">
+	<form novalidate class="new-post-form" name = "$ctrl.newPostForm" ng-submit = "$ctrl.submitPost()">
 		
 		<select class = "new-post-form-select" ng-model="$ctrl.newPost.specie" name = "newPostSpecieSelect" ng-change="$ctrl.getSelectedSpecie()">
 			<option value="">Not Listed</option>
@@ -16,5 +16,8 @@
 			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" placeholder="Your Longitude">
 		</div>
 		<input ng-model = "$ctrl.newPost.image" name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
+
+		<input type="submit" id="new-post-submit" value="Submit" />
+
 	</form>
 </div>
