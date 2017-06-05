@@ -198,10 +198,10 @@ $new-post-input-height: calc(40px + 2vh);
 	}
 
 	select{
+		width: 90vw;
 		height: $new-post-input-height;
 		text-align-last: center;
 		background-color: white;
-		flex-grow: 2;
 	}
 
 	textarea{
