@@ -121,8 +121,10 @@ $new-post-input-height: calc(40px + 2vh);
 	z-index: 999;
 }
 
-.wildlife-map-menu-bar-text-container{
-	@extend %flex-column-centered;
+.wildlife-map-menu-bar-input-and-dropdown-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between; 
 }
 
 #wildlife-map{ 
@@ -138,12 +140,24 @@ $new-post-input-height: calc(40px + 2vh);
 	width: 50%;
 }
 
+.new-post-link-container{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
 .new-post-link{
 	background-color: white;
 	border: 2px solid black;
 	color: black;
-	width: calc(25px + 2vw);
+	width: 100vw;
 	line-height: 1.5;
+	flex-grow: 1;
+	min-width: 25px;
+	text-align: center;
+	&:hover{
+		text-decoration: none;
+	}
 }
 // new post form
 .new-post-container{
@@ -184,10 +198,10 @@ $new-post-input-height: calc(40px + 2vh);
 	}
 
 	select{
-		width: 90vw;
 		height: $new-post-input-height;
 		text-align-last: center;
 		background-color: white;
+		flex-grow: 2;
 	}
 
 	textarea{
