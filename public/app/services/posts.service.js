@@ -2,7 +2,7 @@
 	angular.module('app')
 		.service('postsService', service)
 
-	service.$inject = ['$http', "$localForage"]
+	service.$inject = ['$http', '$localForage']
 
 	function service($http, $localForage) {
 		const vm = this
