@@ -62,6 +62,19 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
+function postImage(){
+	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
+}
+
+self.addEventListener('sync', function(e) {
+	if (e.tag === 'image-post') {
+		e.waitUntil(postImage());
+	}
+});
+
+
+
+
 self.addEventListener('fetch', function(e) {
 	// console.log('[ServiceWorker] Fetch', e.request.url);
 
@@ -74,9 +87,9 @@ self.addEventListener('fetch', function(e) {
 				// get response from network
 				return fetch(e.request).then(response => {
 					console.log(e.request, response)
-					// put request url and clone of response from network in cache
+						// put request url and clone of response from network in cache
 					cache.put(e.request.url, response.clone())
-					// return network response
+						// return network response
 					return response
 				})
 			})
