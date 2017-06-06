@@ -27,7 +27,10 @@ var shellFilesToCache = [
 	'./app/services/posts.service.js',
 
 	'./app/map/map.html',
-	'./app/map/map.controller.js'
+	'./app/map/map.controller.js',
+
+	'./app/new-post/new-post.html',
+	'./app/new-post/new-post.controller.js'
 
 ]
 
