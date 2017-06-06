@@ -35,6 +35,9 @@
                .register('./service-worker.js')
                    .then(registration => navigator.serviceWorker.ready)
                     .then(registration => { // register sync
+
+                      // NEED TO ADD THIS TO ONINIT IN NEW-POST-CONTROLLER????????????
+                      // ?????????????????????
                       document.getElementById('new-post-submit').addEventListener('click', () => {
                           registration.sync.register('image-post').then(() => {
                             console.log('Image Post Sync Registered');

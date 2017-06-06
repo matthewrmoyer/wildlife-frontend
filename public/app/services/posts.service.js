@@ -2,9 +2,9 @@
 	angular.module('app')
 		.service('postsService', service)
 
-	service.$inject = ['$http']
+	service.$inject = ['$http', "$localForage"]
 
-	function service($http) {
+	function service($http, $localForage) {
 		const vm = this
 		vm.posts = []
 		vm.specieSet = new Set()
@@ -68,15 +68,23 @@
 			let formData = new FormData()
 			formData.append("image", img)
 			console.log(formData)
+			$localForage.setItem('imageToPost', img).then(function() {
+				$localForage.getItem('myName').then(function(data) {
+					var imageToPost = data;
+					console.log(imageToPost)
+				})
+			});
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
-				headers: {"Content-Type": undefined},
+				headers: {
+					"Content-Type": undefined
+				},
 				transformRequest: angular.identity
 			}).then(function successCallback(response) {
 				vm.postedImageId = response.data
 				console.log(vm.postedImageId)
 			}, function errorCallback(response) {
 				console.log("ERROR")
-			}).then(function(){
+			}).then(function() {
 				console.log('99999999999999999999999')
 			})
 		}

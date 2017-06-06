@@ -62,8 +62,15 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
-function postImage(){
+function postImage() {
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
+	var x = 'hi there'
+	console.log(x)
+
+		// var img = document.getElementById('newPostPhotoInput').files[0]
+	// let formData = new FormData()
+	// formData.append("image", img)
+	// console.log(formData)
 }
 
 self.addEventListener('sync', function(e) {
@@ -71,7 +78,6 @@ self.addEventListener('sync', function(e) {
 		e.waitUntil(postImage());
 	}
 });
-
 
 
 
