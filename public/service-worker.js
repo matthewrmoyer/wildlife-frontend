@@ -19,7 +19,7 @@ var shellFilesToCache = [
 	'./app/app.module.js',
 
 	'./node_modules/localforage/dist/localforage.js',
-	'./node_modules/angular-localforage/dist/angular-localforage.js',
+	'./node_modules/angular-localforage/dist/angular-localForage.js',
 
 	'./app/welcome/welcome.html',
 	'./app/welcome/welcome.controller.js',
@@ -27,7 +27,10 @@ var shellFilesToCache = [
 	'./app/services/posts.service.js',
 
 	'./app/map/map.html',
-	'./app/map/map.controller.js'
+	'./app/map/map.controller.js',
+
+	'./app/new-post/new-post.html',
+	'./app/new-post/new-post.controller.js'
 
 ]
 
