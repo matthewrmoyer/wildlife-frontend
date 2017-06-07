@@ -67,11 +67,11 @@
 			console.log('postsService POSTINMAGE FHCTIUON')
 			let formData = new FormData()
 			formData.append("image", img)
-			console.log(formData)
+			// console.log(formData)
 			$localForage.setItem('imageToPost', img).then(function() {
-				$localForage.getItem('myName').then(function(data) {
+				$localForage.getItem('imageToPost').then(function(data) {
 					var imageToPost = data;
-					console.log(imageToPost)
+					// console.log(imageToPost)
 				})
 			});
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {

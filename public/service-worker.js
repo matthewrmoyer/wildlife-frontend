@@ -1,5 +1,8 @@
+// importScripts('./node_modules/localforage/dist/localforage.js')
+
 var cacheName = 'shell';
 var dataCacheName = 'dataCache'
+var imageCacheName = 'imageCache88'
 var shellFilesToCache = [
 	'/',
 	'./index.html',
@@ -50,7 +53,7 @@ self.addEventListener('activate', (e) => {
 		caches.keys().then(function(keyList) {
 			return Promise.all(keyList.map(function(key) {
 				// this is checking if there is an old version of the app cached
-				if (key !== cacheName && key !== dataCacheName) {
+				if (key !== cacheName && key !== dataCacheName && key !== imageCacheName) {
 					//if there is an old version delete it
 					//immediately before this step, there would be two different versions installed already 
 					console.log('[ServiceWorker] Removing old cache', key);
@@ -63,14 +66,25 @@ self.addEventListener('activate', (e) => {
 })
 
 function postImage() {
+
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
 	var x = 'hi there'
-	console.log(x)
 
-		// var img = document.getElementById('newPostPhotoInput').files[0]
-	// let formData = new FormData()
-	// formData.append("image", img)
-	// console.log(formData)
+	// GET IMAGE OUT OF CACHE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
+	var myHeaders = new Headers()
+	myHeaders.append(
+'Content-Type', 'multipart/form-data; boundary=----WebKitFormBoundary1xmonzSRcX08xXhv')
+
+	caches.open(imageCacheName)
+		.then((cache)=>{cache.match('https://wildlife-backend.herokuapp.com/posts/image')
+			.then((req)=>{
+				var myInit = {method: 'POST', headers: myHeaders, mode: 'cors', cache: 'default', body: req.body }
+			 	fetch(req.url, myInit)
+					.then(res => {
+						console.log('POSTED')
+					})
+				})
+		})
 }
 
 self.addEventListener('sync', function(e) {
@@ -82,12 +96,13 @@ self.addEventListener('sync', function(e) {
 
 
 self.addEventListener('fetch', function(e) {
-	// console.log('[ServiceWorker] Fetch', e.request.url);
 
 	// requesting posts / data from backend
 	// this is 1 of 2 requets being made, this request to the backend, there is another request being made to the cache in the postservice
 	var dataUrl = 'https://wildlife-backend.herokuapp.com/posts';
-	if (e.request.url.indexOf(dataUrl) > -1) {
+	var imageUrl = 'https://wildlife-backend.herokuapp.com/posts/image';
+
+	if (e.request.url == dataUrl) {
 		e.respondWith(
 			caches.open(dataCacheName).then(cache => {
 				// get response from network
@@ -100,6 +115,27 @@ self.addEventListener('fetch', function(e) {
 				})
 			})
 		)
+
+	} else if (e.request.url == imageUrl) {
+		e.respondWith(fetch(e.request).catch((resp) => {
+			console.log('eeeee')
+			if (resp.status == 200){return resp } else{
+			caches.open(imageCacheName).then(cache => {
+				var myBlob = new Blob();
+
+		var init = { "status" : 200 , "statusText" : "SuperSmashingGreat!" };
+		var myResponse = new Response(myBlob,init);
+
+		var x = myResponse.clone();
+		x.body = e.request.body
+				// add to 
+				console.log('foo')
+				cache.put(e.request.url, x.clone()).then((res)=>{
+					console.log('foo')
+					return x.clone()
+				})
+			})
+		}}))
 
 		// app is asking for app shell, so use cache with network as fallback
 	} else {
