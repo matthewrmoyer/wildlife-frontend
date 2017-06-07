@@ -74,6 +74,8 @@
 					// console.log(imageToPost)
 				})
 			});
+
+			
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
 				headers: {
 					"Content-Type": undefined

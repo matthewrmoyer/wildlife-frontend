@@ -65,6 +65,11 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
+
+
+
+
+
 function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
@@ -72,22 +77,39 @@ function postImage() {
 
 	// GET IMAGE OUT OF CACHE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
 	var myHeaders = new Headers()
-	myHeaders.append(
-'Content-Type', 'multipart/form-data; boundary=----WebKitFormBoundary1xmonzSRcX08xXhv')
+	myHeaders.set(
+		'Content-Type', "multipart/form-data; boundary='----WebKitFormBoundary1xmonzSRcX08xXhv'")
 
 	caches.open(imageCacheName)
-		.then((cache)=>{cache.match('https://wildlife-backend.herokuapp.com/posts/image')
-			.then((req)=>{
-				var myInit = {method: 'POST', headers: myHeaders, mode: 'cors', cache: 'default', body: req.body }
-			 	fetch(req.url, myInit)
-					.then(res => {
-						console.log('POSTED')
-					})
+		.then((cache) => {
+			cache.match('https://wildlife-backend.herokuapp.com/posts/image')
+				.then((req) => {
+
+					console.log(req.body)
+					var myInit = {
+						method: 'POST',
+						headers: myHeaders,
+						mode: 'cors',
+						cache: 'default',
+				body: req
+					}
+					fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit)
+						.then(res => {
+							console.log(res.status)
+							console.log(res)
+							console.log('POSTED')
+						})
 				})
 		})
 }
 
+
+
+
 self.addEventListener('sync', function(e) {
+	console.log('SYNCT')
+	console.log(e)
+
 	if (e.tag === 'image-post') {
 		e.waitUntil(postImage());
 	}
@@ -119,23 +141,29 @@ self.addEventListener('fetch', function(e) {
 	} else if (e.request.url == imageUrl) {
 		e.respondWith(fetch(e.request).catch((resp) => {
 			console.log('eeeee')
-			if (resp.status == 200){return resp } else{
-			caches.open(imageCacheName).then(cache => {
-				var myBlob = new Blob();
+			if (resp.status == 200) {
+				return resp
+			} else {
+				caches.open(imageCacheName).then(cache => {
+					var myBlob = new Blob();
 
-		var init = { "status" : 200 , "statusText" : "SuperSmashingGreat!" };
-		var myResponse = new Response(myBlob,init);
+					var init = {
+						"status": 200,
+						"statusText": "SuperSmashingGreat!"
+					};
+					var myResponse = new Response(myBlob, init);
 
-		var x = myResponse.clone();
-		x.body = e.request.body
-				// add to 
-				console.log('foo')
-				cache.put(e.request.url, x.clone()).then((res)=>{
+					var x = myResponse.clone();
+					x.body = e.request.body
+						// add to 
 					console.log('foo')
-					return x.clone()
+					cache.put(e.request.url, x.clone()).then((res) => {
+						console.log('PUTTING X.CLONE INTO CACHE')
+						return x.clone()
+					})
 				})
-			})
-		}}))
+			}
+		}))
 
 		// app is asking for app shell, so use cache with network as fallback
 	} else {
