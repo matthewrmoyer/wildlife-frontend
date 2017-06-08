@@ -11,6 +11,7 @@
   function authService($state, angularAuth0, $timeout) {
 
     function login() {
+      console.log('auth service file login')
       angularAuth0.authorize();
     }
     
