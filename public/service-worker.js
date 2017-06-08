@@ -1,4 +1,4 @@
-// importScripts('./node_modules/localforage/dist/localforage.js')
+importScripts('./node_modules/localforage/dist/localforage.js')
 
 var cacheName = 'shell';
 var dataCacheName = 'dataCache'
@@ -68,14 +68,12 @@ self.addEventListener('activate', (e) => {
 
 
 
-
-
 function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
 	var x = 'hi there'
 
-	// GET IMAGE OUT OF CACHE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
+	// GET IMAGE OUT OF LOCALFORAGE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
 	var myHeaders = new Headers()
 	myHeaders.set(
 		'Content-Type', "multipart/form-data; boundary='----WebKitFormBoundary1xmonzSRcX08xXhv'")
@@ -91,7 +89,7 @@ function postImage() {
 						headers: myHeaders,
 						mode: 'cors',
 						cache: 'default',
-				body: req
+						body: req.body
 					}
 					fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit)
 						.then(res => {
@@ -102,7 +100,6 @@ function postImage() {
 				})
 		})
 }
-
 
 
 
@@ -139,33 +136,20 @@ self.addEventListener('fetch', function(e) {
 		)
 
 	} else if (e.request.url == imageUrl) {
-		e.respondWith(fetch(e.request).catch((resp) => {
-			console.log('eeeee')
-			if (resp.status == 200) {
-				return resp
-			} else {
-				caches.open(imageCacheName).then(cache => {
-					var myBlob = new Blob();
 
-					var init = {
-						"status": 200,
-						"statusText": "SuperSmashingGreat!"
-					};
-					var myResponse = new Response(myBlob, init);
+		const clonedRequest = e.request.clone()
+		e.respondWith(fetch(e.request)
+			.catch(error => {
 
-					var x = myResponse.clone();
-					x.body = e.request.body
-						// add to 
-					console.log('foo')
-					cache.put(e.request.url, x.clone()).then((res) => {
-						console.log('PUTTING X.CLONE INTO CACHE')
-						return x.clone()
+					const url = new URL(e.request.url)
+					return clonedRequest.text().then(body => {
+						return localforage.setItem(url.toString(), body)
 					})
-				})
-			}
-		}))
 
-		// app is asking for app shell, so use cache with network as fallback
+			})
+
+			// app is asking for app shell, so use cache with network as fallback
+		)
 	} else {
 		e.respondWith(
 			caches.match(e.request).then(function(response) {
