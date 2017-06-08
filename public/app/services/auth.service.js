@@ -52,6 +52,7 @@
       localStorage.removeItem('access_token');
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
+      localStorage.removeItem('userEmail');
     }
 
     function isAuthenticated() {
@@ -82,12 +83,7 @@
       vm.userProfile = profile;
       console.log(vm.userProfile)
       console.log(vm.userProfile.email)
-      $localForage.setItem('userEmail', vm.userProfile.email).then(function() {
-        $localForage.getItem('userEmail').then(function(data) {
-          var userEmail = data;
-          console.log(userEmail)
-        })
-      })
+      localStorage.setItem('userEmail', vm.userProfile.email)
     }
 
     function getCachedProfile() {
