@@ -72,7 +72,7 @@
         if (profile) {
           console.log(accessToken)
           setUserProfile(profile);
-          console.log(profile)
+          vm.userProfile = profile
         }
         cb(err, profile);
       });
@@ -80,11 +80,19 @@
 
     function setUserProfile(profile) {
       vm.userProfile = profile;
+      console.log(vm.userProfile)
+      console.log(vm.userProfile.email)
+      $localForage.setItem('userEmail', vm.userProfile.email).then(function() {
+        $localForage.getItem('userEmail').then(function(data) {
+          var userEmail = data;
+          console.log(userEmail)
+        })
+      })
     }
 
     function getCachedProfile() {
       console.log('USER PROFILE')
-      console.log(vm.userProfile)
+        // console.log(vm.userProfile)
       return vm.userProfile;
     }
 
