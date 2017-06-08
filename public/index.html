@@ -73,6 +73,17 @@
          ]).then(function(){console.log('local forage setDriver success')}, function(){console.log('ERROR: LOCALFORAGE DRIVER NOT SET')})
       </script>
 
+      <!-- auth0 -->
+      <script type="text/javascript" src="./auth0-variables.js"></script>
+      <script type="text/javascript" src="./node_modules/auth0-js/build/auth0.js"></script>
+      <script type="text/javascript" src="./node_modules/angular-auth0/dist/angular-auth0.js"></script>
+
+       <script type="text/javascript" src="./app/app.run.js"></script>
+
+
+
+
+
 
       <!-- ui-router -->
       <!--       <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script> -->
@@ -83,6 +94,8 @@
       
       <!-- services -->
       <script src="./app/services/posts.service.js"></script>
+
+      <script type="text/javascript" src="./app/services/auth.service.js"></script>
       <!-- controllers -->
       <script src="./app/welcome/welcome.controller.js"></script>
       <script src="./app/map/map.controller.js"></script>

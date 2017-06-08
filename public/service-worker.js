@@ -72,9 +72,9 @@ function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
 	var x = 'hi there'
-<<<<<<< HEAD
+
 	console.log(x)
-=======
+
 
 	// GET IMAGE OUT OF LOCALFORAGE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
 	var myHeaders = new Headers()
@@ -102,7 +102,6 @@ function postImage() {
 						})
 				})
 		})
->>>>>>> background-sync-setup-attempt-2
 }
 
 
