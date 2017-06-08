@@ -14,7 +14,19 @@
 				</div>
 			</a>
 		</div>
-
-		<button ng-click="$ctrl.login()">Log In</button>
+		<div class = "welcome-state-button col-xs-12 col-sm-5" ng-if="!$ctrl.auth.isAuthenticated()" ng-click="$ctrl.login()">
+			<a>
+				<div class = "welcome-state-button-text-container">
+					<div class = "welcome-state-button-text">Log In</div>
+				</div>
+			</a>
+		</div>
+		<div class = "welcome-state-button col-xs-12 col-sm-5" ng-if="$ctrl.auth.isAuthenticated()" ng-click="$ctrl.logout()">
+			<a>
+				<div class = "welcome-state-button-text-container">
+					<div class = "welcome-state-button-text">Log Out</div>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
