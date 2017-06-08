@@ -22,7 +22,7 @@
           $state.go('home');
         } else if (err) {
           $timeout(function() {
-            $state.go('home');
+            $state.go('map');
           });
           console.log(err);
           alert('Error: ' + err.error + '. Check the console for further details.');
