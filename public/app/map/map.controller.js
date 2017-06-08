@@ -47,7 +47,6 @@
 			console.log(vm.specieSet)
 			console.log(vm.specieArray)
 
-
 			vm.getAndWatchUserLocation(vm.showPosition)
 
 			// generate map

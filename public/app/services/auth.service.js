@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
   'use strict';
 
@@ -14,7 +14,7 @@
       console.log('auth service file login')
       angularAuth0.authorize();
     }
-    
+
     function handleAuthentication() {
       angularAuth0.parseHash(function(err, authResult) {
         if (authResult && authResult.accessToken && authResult.idToken) {
@@ -37,14 +37,14 @@
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
     }
-    
+
     function logout() {
       // Remove tokens and expiry time from localStorage
       localStorage.removeItem('access_token');
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
     }
-    
+
     function isAuthenticated() {
       // Check whether the current time is past the 
       // access token's expiry time
@@ -54,11 +54,45 @@
       return new Date().getTime() < expiresAt;
     }
 
+
+    var userProfile;
+
+    function getProfile(cb) {
+      var accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        throw new Error('Access token must exist to fetch profile');
+      }
+      angularAuth0.client.userInfo(accessToken, function(err, profile) {
+        if (profile) {
+          console.log(accessToken)
+          setUserProfile(profile);
+          console.log(profile)
+        }
+        cb(err, profile);
+      });
+    }
+
+    function setUserProfile(profile) {
+      userProfile = profile;
+    }
+
+    function getCachedProfile() {
+      console.log('USER PROFILE')
+      console.log(userProfile)
+      return userProfile;
+    }
+
     return {
+      getProfile: getProfile,
+      setUserProfile: setUserProfile,
+      getCachedProfile: getCachedProfile,
       login: login,
       handleAuthentication: handleAuthentication,
       logout: logout,
       isAuthenticated: isAuthenticated
     }
+
+
+
   }
 })();
