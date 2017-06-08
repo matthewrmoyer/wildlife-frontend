@@ -19,7 +19,7 @@
       angularAuth0.parseHash(function(err, authResult) {
         if (authResult && authResult.accessToken && authResult.idToken) {
           setSession(authResult);
-          $state.go('map');
+          $state.go('home');
         } else if (err) {
           $timeout(function() {
             $state.go('home');
