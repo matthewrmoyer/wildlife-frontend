@@ -74,8 +74,8 @@
 		function createNewPost(){
 
 			var objToPost = {}
-			objToPost.user_email = "USEREMAILHARDCODED@GMAIL.COM",
-			objToPost.user_name ="USERNAMEHARDCODED",
+			objToPost.user_email = localStorage.getItem("userEmail"),
+			objToPost.user_name = localStorage.getItem("userEmail"),
 
 			objToPost.latitude = vm.userLatitude,
 			objToPost.longitude = vm.userLongitude,
