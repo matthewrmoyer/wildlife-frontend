@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   'use strict';
 
@@ -14,13 +14,12 @@
       console.log('auth service file login')
       angularAuth0.authorize();
     }
-
+    
     function handleAuthentication() {
       angularAuth0.parseHash(function(err, authResult) {
         if (authResult && authResult.accessToken && authResult.idToken) {
           setSession(authResult);
           $state.go('map');
-          $location.path('/').hash('');
         } else if (err) {
           $timeout(function() {
             $state.go('home');
@@ -38,14 +37,14 @@
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
     }
-
+    
     function logout() {
       // Remove tokens and expiry time from localStorage
       localStorage.removeItem('access_token');
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
     }
-
+    
     function isAuthenticated() {
       // Check whether the current time is past the 
       // access token's expiry time
