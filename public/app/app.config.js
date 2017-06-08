@@ -29,7 +29,7 @@
 			domain: 'matthewrmoyer.auth0.com',
 			responseType: 'token id_token',
 			audience: 'https://matthewrmoyer.auth0.com/userinfo',
-			redirectUri: 'https://wildlife-e6355.firebaseapp.com/',
+			redirectUri: 'https://wildlife-e6355.firebaseapp.com/map',
 			scope: 'openid'
 		});
 
