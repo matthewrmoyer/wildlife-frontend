@@ -8,7 +8,6 @@
   function authService($state, angularAuth0, $timeout, $localForage) {
     const vm = this
 
-
     vm.userProfile;
 
     vm.login = login
@@ -19,8 +18,6 @@
     vm.getProfile = getProfile
     vm.setUserProfile = setUserProfile
     vm.getCachedProfile = getCachedProfile
-
-
 
     function login() {
       console.log('auth service file login')
@@ -65,9 +62,6 @@
       console.log(new Date().getTime() < expiresAt)
       return new Date().getTime() < expiresAt;
     }
-
-
-
 
     function getProfile(cb) {
       var accessToken = localStorage.getItem('access_token');

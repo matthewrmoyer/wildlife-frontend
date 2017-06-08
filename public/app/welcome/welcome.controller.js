@@ -13,17 +13,15 @@
 		vm.auth = authService
 		vm.login = authService.login
 		vm.logout = authService.logout
-		vm.profile;
+		vm.userProfile = authService.userProfile;
 
 		vm.$onInit = function() {
 			console.log('welcome-state init')
-
-
 			if (authService.getCachedProfile()) {
-				vm.profile = authService.getCachedProfile();
+				vm.userProfile = authService.getCachedProfile();
 			} else {
 				authService.getProfile(function(err, profile) {
-					vm.profile = profile;
+					vm.userProfile = profile;
 				});
 			}
 		}
