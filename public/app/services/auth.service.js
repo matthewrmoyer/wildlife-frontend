@@ -1,14 +1,26 @@
 (function() {
-
   'use strict';
-
-  angular
-    .module('app')
+  angular.module('app')
     .service('authService', authService);
 
-  authService.$inject = ['$state', 'angularAuth0', '$timeout'];
+  authService.$inject = ['$state', 'angularAuth0', '$timeout', '$localForage'];
 
-  function authService($state, angularAuth0, $timeout) {
+  function authService($state, angularAuth0, $timeout, $localForage) {
+    const vm = this
+
+
+    vm.userProfile;
+
+    vm.login = login
+    vm.handleAuthentication = handleAuthentication
+    vm.setSession = setSession
+    vm.logout = logout
+    vm.isAuthenticated = isAuthenticated
+    vm.getProfile = getProfile
+    vm.setUserProfile = setUserProfile
+    vm.getCachedProfile = getCachedProfile
+
+
 
     function login() {
       console.log('auth service file login')
@@ -55,7 +67,7 @@
     }
 
 
-    var userProfile;
+
 
     function getProfile(cb) {
       var accessToken = localStorage.getItem('access_token');
@@ -73,26 +85,14 @@
     }
 
     function setUserProfile(profile) {
-      userProfile = profile;
+      vm.userProfile = profile;
     }
 
     function getCachedProfile() {
       console.log('USER PROFILE')
-      console.log(userProfile)
-      return userProfile;
+      console.log(vm.userProfile)
+      return vm.userProfile;
     }
-
-    return {
-      getProfile: getProfile,
-      setUserProfile: setUserProfile,
-      getCachedProfile: getCachedProfile,
-      login: login,
-      handleAuthentication: handleAuthentication,
-      logout: logout,
-      isAuthenticated: isAuthenticated
-    }
-
-
 
   }
 })();
