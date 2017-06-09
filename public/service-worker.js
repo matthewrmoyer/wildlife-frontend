@@ -33,7 +33,13 @@ var shellFilesToCache = [
 	'./app/map/map.controller.js',
 
 	'./app/new-post/new-post.html',
-	'./app/new-post/new-post.controller.js'
+	'./app/new-post/new-post.controller.js',
+
+	'./app/user-map/user-map.html',
+	'./app/user-map/user-map.controller.js',
+
+	'./app/profile/profile.html',
+	'./app/profile/profile.controller.js'
 
 ]
 
