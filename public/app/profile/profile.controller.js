@@ -10,6 +10,7 @@
 	function ProfileController(postsService, authService) {
 		const vm = this
 		vm.auth = authService
+		vm.login = authService.login
 		vm.userProfile = authService.userProfile;
 
 		vm.$onInit = function() {
