@@ -11,6 +11,8 @@
 	function UserMapController(postsService, authService) {
 		const vm = this;
 		// variables
+		vm.auth = authService
+		
 		vm.posts = postsService.posts;
 		vm.specieSet = postsService.specieSet
 		vm.specieArray = postsService.specieArray;
