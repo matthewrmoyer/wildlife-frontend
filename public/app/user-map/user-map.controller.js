@@ -1,14 +1,14 @@
 (function() {
 	'use strict'
 	angular.module('app')
-		.component('map', {
-			controller: ('MapController', MapController),
-			templateUrl: './app/map/map.html'
+		.component('userMap', {
+			controller: ('UserMapController', UserMapController),
+			templateUrl: './app/user-map/user-map.html'
 		})
 
-	MapController.$inject = ['postsService', 'authService']
+	UserMapController.$inject = ['postsService', 'authService']
 
-	function MapController(postsService, authService) {
+	function UserMapController(postsService, authService) {
 		const vm = this;
 		// variables
 		vm.posts = postsService.posts;
@@ -16,6 +16,7 @@
 		vm.specieArray = postsService.specieArray;
 		vm.specieToFilterFor = postsService.specieToFilterFor;
 
+		vm.emailToFilterFor = authService.userProfile.email;
 
 		vm.wildlifeMap;
 		vm.wildlifeMapTileLayer;
@@ -49,7 +50,7 @@
 			console.log(vm.posts)
 			console.log(vm.specieSet)
 			console.log(vm.specieArray)
-
+			console.log(vm.emailToFilterFor)
 
 			vm.getAndWatchUserLocation(vm.showPosition)
 

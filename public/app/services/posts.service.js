@@ -19,11 +19,6 @@
 		if ('caches' in window) {
 			caches.match(vm.allPostsUrl).then(response => {
 				if (response) {
-					// response.data.forEach(element => {
-					// 	vm.posts.push(element)
-					// 	vm.specieSet.add(element.specie)
-					// })
-
 					response.json().then(data => ({
 						data: data,
 						status: response.status
@@ -35,9 +30,6 @@
 							vm.specieSet.add(element.specie)
 						})
 					})
-
-
-
 				}
 			}).then(function() {
 				vm.specieSet.forEach(element => {
