@@ -121,12 +121,24 @@ $profile-option-font-size: calc(20px + 3vw);
 	background-color: rgba(255,255,255,.5);
 	margin-bottom: calc(#{$wildlife-map-menu-bar-height} * -1);
 	z-index: 999;
-}
+	box-shadow: 0px 0px 10px 0px $dark-accent;
 
+}
+.wildlife-menu-bar-select{
+	box-shadow: 0px 0px 5px 2px $dark-accent;
+	margin-left: 10px;
+}
 .wildlife-map-menu-bar-input-and-dropdown-container{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between; 
+	justify-content: center; 
+}
+.wildlife-map-menu-bar-input{
+	box-shadow: 0px 0px 2px 1px $dark-accent;
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+
 }
 
 #wildlife-map{ 
@@ -135,8 +147,11 @@ $profile-option-font-size: calc(20px + 3vw);
 }
 
 .location-image{
-	height: $wildlife-map-menu-bar-height;
+	height: calc(#{$wildlife-map-menu-bar-height} - 5px);
 	cursor: pointer;
+	box-shadow: 0px 0px 5px 2px $dark-accent;
+	border-radius: 50%;
+
 }
 .popup-image{
 	width: 50%;
@@ -144,19 +159,24 @@ $profile-option-font-size: calc(20px + 3vw);
 
 .new-post-link-container{
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	text-align: center;
 }
 
 .new-post-link{
 	background-color: white;
-	border: 2px solid black;
+	box-shadow: 0px 0px 5px 2px $dark-accent;
+	border-radius: 50%;
 	color: black;
-	width: 100vw;
-	line-height: 1.5;
-	flex-grow: 1;
-	min-width: 25px;
-	text-align: center;
+	height: calc(#{$wildlife-map-menu-bar-height} - 5px);
+	width: calc(#{$wildlife-map-menu-bar-height} - 5px);
+
+	margin-right: 10px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 	&:hover{
 		text-decoration: none;
 	}
@@ -164,6 +184,10 @@ $profile-option-font-size: calc(20px + 3vw);
 
 .profile-link{
 	font-size: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+	box-shadow: 0px 0px 5px 2px $dark-accent;
 }
 
 .map-link{
@@ -230,13 +254,35 @@ $profile-option-font-size: calc(20px + 3vw);
 
 .profile-container{
 	display: flex;
-	flex-direction: column;
+	// flex-direction: column;
+	width: 80vw;
 	background-color: grey;
 	min-height: 100vh;
-}
-.profile-option{
-	padding-left: 15px;
+		&:after {
+  		content: "";
+  		background: url("../images/welcome-state-image.png");
+  		background-size: cover;
+  		opacity: 0.4;
+  		top: 0;
+  		left: 0;
+  		bottom: 0;
+  		right: 0;
+  		position: absolute;
+  		z-index: -1;   
+	}
 
+}
+
+.profile-option-container{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 20px 10px $dark-accent;
+
+}
+
+.profile-option{
+	width: 80vw;
+	padding-left: 15px;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;

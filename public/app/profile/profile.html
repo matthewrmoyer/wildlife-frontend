@@ -1,8 +1,9 @@
 <div class = "profile-container">
-	<a ng-if="$ctrl.auth.isAuthenticated()"  ui-sref="userMap" class = "profile-option">Your Sightings</a>
-
-	<a ui-sref="map" class = "profile-option">All Sightings</a>
-	<a ui-sref="newPost" class = "profile-option">Post</a>
-	<a ng-if="!$ctrl.auth.isAuthenticated()" ng-click="$ctrl.login()" class = "profile-option">Log In</a>
-	<a href="https://github.com/matthewrmoyer/capstone-submissions/blob/master/README.md" class = "profile-option">About</a>
+	<div class = "profile-option-container">
+		<a ng-if="$ctrl.auth.isAuthenticated()"  ui-sref="userMap" class = "profile-option">Your Sightings</a>
+		<a ui-sref="map" class = "profile-option">All Sightings</a>
+		<a ui-sref="newPost" class = "profile-option">Post</a>
+		<a ng-if="!$ctrl.auth.isAuthenticated()" ng-click="$ctrl.login()" class = "profile-option">Log In</a>
+		<a href="https://github.com/matthewrmoyer/capstone-submissions/blob/master/README.md" class = "profile-option">About</a>
+	</div>
 </div>

@@ -1,16 +1,16 @@
 <div class = "wildlife-map-container">
 	<div class = "wildlife-map-menu-bar col-xs-12">
 
-		<div class="wildlife-map-menu-bar-input-and-dropdown-container col-xs-9">
-			<div class = "new-post-link-container col-xs-2">
+		<div class="wildlife-map-menu-bar-input-and-dropdown-container">
+			<div class = "new-post-link-container col-xs-1">
 				<a class = "new-post-link" ui-sref="newPost">+</a>
 			</div>
 			
-			<select class = "wildlife-menu-bar-select" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" class = "col-xs-3">
+			<select class = "wildlife-menu-bar-select col-xs-4" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)">
 				<option value="">All</option>
 				<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 			</select>
-			<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" class = "filter-input col-xs-4" type="text" placeholder= "All"
+			<input class = "wildlife-map-menu-bar-input filter-input col-xs-3" ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" type="text" placeholder= "All"
 			>
 		</div>
 
