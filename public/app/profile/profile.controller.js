@@ -10,5 +10,17 @@
 	function ProfileController(postsService, authService) {
 		const vm = this
 		vm.auth = authService
+		vm.userProfile = authService.userProfile;
+
+		vm.$onInit = function() {
+			console.log('profile-state init')
+			if (authService.getCachedProfile()) {
+				vm.userProfile = authService.getCachedProfile();
+			} else {
+				authService.getProfile(function(err, profile) {
+					vm.userProfile = profile;
+				});
+			}
+		}
 	}
 })()
