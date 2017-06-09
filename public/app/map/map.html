@@ -13,6 +13,9 @@
 			<input ng-model = "$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)" id = "specie-filter-input" class = "filter-input col-xs-4" type="text" placeholder= "All"
 			>
 		</div>
+
+		<a ui-sref="profile"><i class="profile-link fa fa-user" aria-hidden="true"></i>
+</a>
 		
 		<div ng-click="$ctrl.centerOnUser()">
 			<img class = "location-image" src="../images/location-image.png" alt="<i class='fa fa-circle' aria-hidden='true'></i>">

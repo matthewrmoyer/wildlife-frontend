@@ -107,6 +107,12 @@
   .new-post-link:hover {
     text-decoration: none; }
 
+.profile-link {
+  font-size: 30px; }
+
+.map-link {
+  font-size: 30px; }
+
 .new-post-container {
   background-color: #e6e6e6;
   min-height: 100vh; }
