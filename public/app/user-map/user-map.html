@@ -6,7 +6,7 @@
 			</div>
 			<div class="wildlife-map-menu-bar-input-and-dropdown-container">
 			
-			<select class = "wildlife-menu-bar-select col-xs-4" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)">
+			<select class = "wildlife-menu-bar-select col-xs-12" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)">
 				<option value="">All</option>
 				<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 			</select>
