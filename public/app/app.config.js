@@ -23,13 +23,19 @@
 				url: '/newPost',
 				component: 'newPost',
 			})
+			.state({
+				name: 'profile',
+				url: '/profile',
+				component: 'profile',
+			})
+
 			// Initialization for the angular-auth0 library
 		angularAuth0Provider.init({
 			clientID: 'X7GOoX2jsq7Et0e75iVTk8Rlv1HkAPeQ',
 			domain: 'matthewrmoyer.auth0.com',
 			responseType: 'token id_token',
 			audience: 'https://matthewrmoyer.auth0.com/userinfo',
-			redirectUri: 'https://wildlife-e6355.firebaseapp.com/map',
+			redirectUri: 'http://localhost:3000/map',
 			scope: 'openid profile email'
 		});
 
