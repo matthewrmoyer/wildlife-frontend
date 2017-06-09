@@ -147,6 +147,30 @@
       outline: none;
       border-color: #1dc8d7; }
 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  min-height: 100vh; }
+
+.profile-option {
+  padding-left: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  font-size: calc(20px + 3vw);
+  line-height: 3;
+  border-bottom: 2px solid #1dc8d7;
+  border-top: 2px solid #1dc8d7;
+  color: black; }
+  .profile-option:hover {
+    cursor: pointer;
+    color: black;
+    background-color: #f2f2f2;
+    text-decoration: none; }
+
 .display-none-class {
   display: none; }
 
