@@ -29,6 +29,8 @@
 		vm.createNewPost = createNewPost
 		vm.sendNewPost = postsService.sendNewPost
 
+		vm.goToMap = goToMap
+
 
 		vm.$onInit = function() {
 			console.log('new post controller init')
@@ -67,7 +69,7 @@
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
-			vm.postImage(img).then(vm.createNewPost)
+			vm.postImage(img).then(vm.createNewPost).then(vm.goToMap)
 
 		}
 
@@ -87,6 +89,10 @@
 
 			console.log(objToPost)
 			vm.sendNewPost(objToPost)
+		}
+
+		function goToMap(){
+			window.location.href = '/map'
 		}
 	}
 
