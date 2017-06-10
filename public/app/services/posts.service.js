@@ -94,7 +94,7 @@
 
 
 		function sendMessageToSW(msg) {
-			navigator.serviceWorker.controller.postMessage("Client says " + msg);
+			navigator.serviceWorker.controller.postMessage(msg);
 		}
 	}
 })()

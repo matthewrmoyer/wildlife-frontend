@@ -71,13 +71,48 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
-self.addEventListener('message', function(event){
-    console.log("SW Received Message: " + event.data);
+
+var imageMessage;
+
+self.addEventListener('message', function(event) {
+	console.log("SW Received Message: " + event.data);
+	imageMessage = event.data
+	console.log(imageMessage)
 });
+
 
 function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
+	console.log("IMAGE MESSAGE IN POSTIMAGE FUNCTION: " + imageMessage)
+
+
+var asdf =   {
+    "user_email": "cow@gmail.com",
+    "user_name": "cow",
+    "latitude": "40.20",
+    "longitude": "-105.9",
+    "specie": "Cow",
+    "description": "MOOOOOOOOO!",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bobcat2.jpg"
+  }
+	// 	//this is called in background sync
+	// 	// post image
+	var myInit = {
+		method: 'POST',
+		mode: 'cors',
+		body: JSON.stringify(asdf),
+		// redirect: 'follow',
+		headers: new Headers({
+			'Content-Type': 'application/json'
+		})
+	};
+	fetch('https://wildlife-backend.herokuapp.com/posts', myInit).then(function(data) {
+		console.log(data)
+	}, function(data) {
+		console.log(data)
+	});
+
 
 }
 
