@@ -15,6 +15,14 @@
 		vm.postedImageId;
 
 		vm.sendNewPost = sendNewPost
+
+
+		vm.x = new Image()
+		vm.x.src = '../images/icons/icon-128x128.png'
+
+		vm.sendMessageToSW = sendMessageToSW
+
+
 			// cache logic
 		if ('caches' in window) {
 			caches.match(vm.allPostsUrl).then(response => {
@@ -57,8 +65,16 @@
 
 		function postImage(img) {
 			console.log('postsService POSTINMAGE FHCTIUON')
+
+
+			// vm.sendMessageToSW(vm.x)
+
+
+
 			let formData = new FormData()
 			formData.append("image", img)
+			vm.sendMessageToSW(img)
+
 				// console.log(formData)
 			$localForage.setItem('imageToPost', img).then(function() {
 				$localForage.getItem('imageToPost').then(function(data) {
@@ -92,6 +108,11 @@
 				.then(response => {
 					console.log(response)
 				})
+		}
+
+
+		function sendMessageToSW(msg) {
+			navigator.serviceWorker.controller.postMessage("Client says " + msg);
 		}
 	}
 })()

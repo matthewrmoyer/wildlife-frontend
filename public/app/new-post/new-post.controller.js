@@ -76,6 +76,8 @@
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
+			// vm.sendMessageToSW(vm.x)
+			
 			vm.postImage(img).then(vm.createNewPost).then(vm.goToMap)
 
 		}

@@ -16,14 +16,14 @@
 		vm.userProfile = authService.userProfile;
 
 
-		var x = new Image()
-		x.src = '../images/icons/icon-128x128.png'
+		// var x = new Image()
+		// x.src = '../images/icons/icon-128x128.png'
 
-		vm.sendMessageToSW = sendMessageToSW
+		// vm.sendMessageToSW = sendMessageToSW
 
 		vm.$onInit = function() {
 			console.log('WELCOMESTATEINITWELCOMESTATEINITWELCOMESTATEINITWELCOMESTATEINITWELCOMESTATEINIT')
-			vm.sendMessageToSW(x)
+			// vm.sendMessageToSW(x)
 			if (authService.getCachedProfile()) {
 				vm.userProfile = authService.getCachedProfile();
 			} else {
@@ -34,8 +34,8 @@
 		}
 
 
-		function sendMessageToSW(msg) {
-			 navigator.serviceWorker.controller.postMessage("Client says " + msg);
-		}
+		// function sendMessageToSW(msg) {
+		// 	 navigator.serviceWorker.controller.postMessage("Client says " + msg);
+		// }
 	}
 })()
