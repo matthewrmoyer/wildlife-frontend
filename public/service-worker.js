@@ -71,15 +71,15 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
-
-
+self.addEventListener('message', function(event){
+    console.log("SW Received Message: " + event.data);
+});
 
 function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
-	var x = 'hi there'
-
-	console.log(x)
+	var val1 = localforage.getItem('postDataLS');
+	console.log(val1)
 
 
 	// GET IMAGE OUT OF LOCALFORAGE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
@@ -150,10 +150,10 @@ self.addEventListener('fetch', function(e) {
 		e.respondWith(fetch(e.request)
 			.catch(error => {
 
-					const url = new URL(e.request.url)
-					return clonedRequest.text().then(body => {
-						return localforage.setItem(url.toString(), body)
-					})
+				const url = new URL(e.request.url)
+				return clonedRequest.text().then(body => {
+					return localforage.setItem(url.toString(), body)
+				})
 
 			})
 

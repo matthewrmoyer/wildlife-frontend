@@ -59,15 +59,19 @@
 			console.log('postsService POSTINMAGE FHCTIUON')
 			let formData = new FormData()
 			formData.append("image", img)
-			// console.log(formData)
+				// console.log(formData)
 			$localForage.setItem('imageToPost', img).then(function() {
 				$localForage.getItem('imageToPost').then(function(data) {
 					var imageToPost = data;
 					// console.log(imageToPost)
+
+					localStorage.setItem('postDataLS', 'I AM THE POST DATA IN LS');
+					var val1 = localStorage.getItem('postDataLS');
+					console.log(val1)
 				})
 			});
 
-			
+
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
 				headers: {
 					"Content-Type": undefined

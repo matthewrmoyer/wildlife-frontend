@@ -35,6 +35,7 @@
                .register('./service-worker.js')
                    .then(registration => navigator.serviceWorker.ready)
                     .then(registration => { // register sync
+                            console.log("SW registration succeeded. Scope is "+registration.scope);
 
                       // NEED TO ADD THIS TO ONINIT IN NEW-POST-CONTROLLER????????????
                       // ?????????????????????
