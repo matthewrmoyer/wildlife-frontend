@@ -66,27 +66,9 @@
 		function postImage(img) {
 			console.log('postsService POSTINMAGE FHCTIUON')
 
-
-			// vm.sendMessageToSW(vm.x)
-
-
-
 			let formData = new FormData()
 			formData.append("image", img)
 			vm.sendMessageToSW(img)
-
-				// console.log(formData)
-			$localForage.setItem('imageToPost', img).then(function() {
-				$localForage.getItem('imageToPost').then(function(data) {
-					var imageToPost = data;
-					// console.log(imageToPost)
-
-					localStorage.setItem('postDataLS', 'I AM THE POST DATA IN LS');
-					var val1 = localStorage.getItem('postDataLS');
-					console.log(val1)
-				})
-			});
-
 
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
 				headers: {

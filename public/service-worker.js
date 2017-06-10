@@ -78,36 +78,7 @@ self.addEventListener('message', function(event){
 function postImage() {
 
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
-	var val1 = localforage.getItem('postDataLS');
-	console.log(val1)
 
-
-	// GET IMAGE OUT OF LOCALFORAGE AND POST, THEN POST REST OF DATA AND IMAGE URL TO HEROKU
-	var myHeaders = new Headers()
-	myHeaders.set(
-		'Content-Type', "multipart/form-data; boundary='----WebKitFormBoundary1xmonzSRcX08xXhv'")
-
-	caches.open(imageCacheName)
-		.then((cache) => {
-			cache.match('https://wildlife-backend.herokuapp.com/posts/image')
-				.then((req) => {
-
-					console.log(req.body)
-					var myInit = {
-						method: 'POST',
-						headers: myHeaders,
-						mode: 'cors',
-						cache: 'default',
-						body: req.body
-					}
-					fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit)
-						.then(res => {
-							console.log(res.status)
-							console.log(res)
-							console.log('POSTED')
-						})
-				})
-		})
 }
 
 
