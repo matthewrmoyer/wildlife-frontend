@@ -32,9 +32,16 @@
 		vm.goToMap = goToMap
 
 
+
+		vm.x = new Image()
+		vm.x.src = '../images/icons/icon-128x128.png'
+
+		vm.sendMessageToSW = sendMessageToSW
+
 		vm.$onInit = function() {
 			console.log('new post controller init')
 			vm.getUserLocation()
+			// vm.sendMessageToSW(vm.x)
 		}
 
 		function hideNewSpecieInput() {
@@ -89,6 +96,12 @@
 
 			console.log(objToPost)
 			vm.sendNewPost(objToPost)
+		}
+
+
+
+		function sendMessageToSW(msg) {
+			 navigator.serviceWorker.controller.postMessage("Client says " + msg);
 		}
 
 		function goToMap(){
