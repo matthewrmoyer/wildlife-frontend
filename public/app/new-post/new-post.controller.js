@@ -42,7 +42,6 @@
 		vm.$onInit = function() {
 			console.log('new post controller init')
 			vm.getUserLocation()
-				// vm.sendMessageToSW(vm.x)
 
 			document.getElementById('new-post-submit').addEventListener('click', () => {
 				navigator.serviceWorker.ready.then(function(swRegistration) {
@@ -84,10 +83,9 @@
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
-				// vm.sendMessageToSW(vm.x)
-
-			vm.postImage(img).then(vm.createNewPost).then(vm.goBackToPreviousView)
-
+			vm.postImage(img)
+				.then(vm.createNewPost)
+					.then(vm.goBackToPreviousView)
 		}
 
 		function createNewPost() {
