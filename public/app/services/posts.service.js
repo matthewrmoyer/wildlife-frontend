@@ -22,8 +22,10 @@
 
 		vm.sendMessageToSW = sendMessageToSW
 
+		vm.messageObject = {}
 
-			// cache logic
+
+		// cache logic
 		if ('caches' in window) {
 			caches.match(vm.allPostsUrl).then(response => {
 				if (response) {
@@ -68,7 +70,15 @@
 
 			let formData = new FormData()
 			formData.append("image", img)
-			vm.sendMessageToSW(img)
+
+
+			vm.messageObject.image = img
+			vm.messageObject.user_email = localStorage.getItem("userEmail")
+			vm.messageObject.user_name = localStorage.getItem("userEmail")
+
+
+
+			vm.sendMessageToSW(vm.messageObject)
 
 			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
 				headers: {

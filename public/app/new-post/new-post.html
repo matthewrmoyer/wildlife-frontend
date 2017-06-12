@@ -10,7 +10,7 @@
 		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
 		>
 		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
-		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description"></textarea>
+		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description" ng-change="$ctrl.getDescription()"></textarea>
 		<div class = "lat-long-container">
 			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" placeholder="Your Latitude">
 			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" placeholder="Your Longitude">

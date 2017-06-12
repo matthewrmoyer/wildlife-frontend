@@ -23,6 +23,7 @@
 		vm.getSelectedSpecie = getSelectedSpecie
 
 		vm.submitPost = submitPost
+
 		vm.postImage = postsService.postImage
 		vm.postedImageId = postsService.postedImageId
 
@@ -30,14 +31,16 @@
 		vm.sendNewPost = postsService.sendNewPost
 
 
+
 		vm.goBackToPreviousView = goBackToPreviousView
 
+		vm.messageObject = postsService.messageObject
+
+		vm.getDescription = getDescription
 
 
 		vm.x = new Image()
 		vm.x.src = '../images/icons/icon-128x128.png'
-
-		vm.sendMessageToSW = sendMessageToSW
 
 		vm.$onInit = function() {
 			console.log('new post controller init')
@@ -66,6 +69,8 @@
 			} else {
 				vm.hideNewSpecieInput()
 			}
+
+			vm.messageObject.specie = vm.newPost.specie
 		}
 
 		function getUserLocation() {
@@ -77,15 +82,22 @@
 		function setUserLocation(position) {
 			vm.userLatitude = position.coords.latitude
 			vm.userLongitude = position.coords.longitude
+
+			vm.messageObject.latitude = position.coords.latitude
+			vm.messageObject.longitude = position.coords.longitude
+
+
 			console.log(vm.userLatitude)
 			console.log(vm.userLongitude)
 		}
+
+
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
 			vm.postImage(img)
 				.then(vm.createNewPost)
-					.then(vm.goBackToPreviousView)
+				.then(vm.goBackToPreviousView)
 		}
 
 		function createNewPost() {
@@ -100,16 +112,15 @@
 				// trail: vm.newPost.trail,
 				objToPost.description = vm.newPost.description,
 				objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId
-
-
 			console.log(objToPost)
 			vm.sendNewPost(objToPost)
+
+
 		}
 
+		function getDescription() {
+			vm.messageObject.description = vm.newPost.description
 
-
-		function sendMessageToSW(msg) {
-			navigator.serviceWorker.controller.postMessage("Client says " + msg);
 		}
 
 		function goBackToPreviousView() {

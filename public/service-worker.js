@@ -74,12 +74,15 @@ self.addEventListener('activate', (e) => {
 // TODO: SERVICE WORKER GOES OFF AND ON SO GLOBAL VARIABLE WILL BE GONE
 // INSTEAD OF GLOBAL VARIABLE, STORE WITH LOCAL FORAGE, THEN GET IT OUT IN POST IMAGE FUNCTION
 var imageMessage;
+var messageObject
 
 self.addEventListener('message', function(event) {
 	console.log("SW Received Message: " + event.data);
-	imageMessage = event.data
+	messageObject = event.data
+	imageMessage = event.data.image
 	console.log(imageMessage)
 	console.log(typeof imageMessage)
+	console.log(messageObject)
 });
 
 
