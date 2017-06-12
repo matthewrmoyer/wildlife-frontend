@@ -29,7 +29,8 @@
 		vm.createNewPost = createNewPost
 		vm.sendNewPost = postsService.sendNewPost
 
-		vm.goToMap = goToMap
+
+		vm.goBackToPreviousView = goBackToPreviousView
 
 
 
@@ -78,7 +79,7 @@
 			var img = document.getElementById('newPostPhotoInput').files[0]
 			// vm.sendMessageToSW(vm.x)
 			
-			vm.postImage(img).then(vm.createNewPost).then(vm.goToMap)
+			vm.postImage(img).then(vm.createNewPost).then(vm.goBackToPreviousView)
 
 		}
 
@@ -106,8 +107,8 @@
 			 navigator.serviceWorker.controller.postMessage("Client says " + msg);
 		}
 
-		function goToMap(){
-			window.location.href = '/map'
+		function goBackToPreviousView(){
+			history.back()
 		}
 	}
 
