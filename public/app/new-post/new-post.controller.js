@@ -42,7 +42,14 @@
 		vm.$onInit = function() {
 			console.log('new post controller init')
 			vm.getUserLocation()
-			// vm.sendMessageToSW(vm.x)
+				// vm.sendMessageToSW(vm.x)
+
+			document.getElementById('new-post-submit').addEventListener('click', () => {
+				navigator.serviceWorker.ready.then(function(swRegistration) {
+					console.log('REGISTER SYNC FROM NEW POST CONTROLLER')
+					return swRegistration.sync.register('image-post');
+				});
+			});;
 		}
 
 		function hideNewSpecieInput() {
@@ -77,24 +84,24 @@
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
-			// vm.sendMessageToSW(vm.x)
-			
+				// vm.sendMessageToSW(vm.x)
+
 			vm.postImage(img).then(vm.createNewPost).then(vm.goBackToPreviousView)
 
 		}
 
-		function createNewPost(){
+		function createNewPost() {
 
 			var objToPost = {}
 			objToPost.user_email = localStorage.getItem("userEmail"),
-			objToPost.user_name = localStorage.getItem("userEmail"),
+				objToPost.user_name = localStorage.getItem("userEmail"),
 
-			objToPost.latitude = vm.userLatitude,
-			objToPost.longitude = vm.userLongitude,
-			objToPost.specie = vm.newPost.specie,
-			// trail: vm.newPost.trail,
-			objToPost.description = vm.newPost.description,
-			objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId 
+				objToPost.latitude = vm.userLatitude,
+				objToPost.longitude = vm.userLongitude,
+				objToPost.specie = vm.newPost.specie,
+				// trail: vm.newPost.trail,
+				objToPost.description = vm.newPost.description,
+				objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId
 
 
 			console.log(objToPost)
@@ -104,10 +111,10 @@
 
 
 		function sendMessageToSW(msg) {
-			 navigator.serviceWorker.controller.postMessage("Client says " + msg);
+			navigator.serviceWorker.controller.postMessage("Client says " + msg);
 		}
 
-		function goBackToPreviousView(){
+		function goBackToPreviousView() {
 			history.back()
 		}
 	}
