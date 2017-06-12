@@ -78,6 +78,7 @@ self.addEventListener('message', function(event) {
 	console.log("SW Received Message: " + event.data);
 	imageMessage = event.data
 	console.log(imageMessage)
+	console.log(typeof imageMessage)
 });
 
 
@@ -87,27 +88,38 @@ function postImage() {
 	console.log("IMAGE MESSAGE IN POSTIMAGE FUNCTION: " + imageMessage)
 
 
-var asdf =   {
-    "user_email": "cow@gmail.com",
-    "user_name": "cow",
-    "latitude": "40.20",
-    "longitude": "-105.9",
-    "specie": "Cow",
-    "description": "MOOOOOOOOO!",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bobcat2.jpg"
-  }
-	// 	//this is called in background sync
-	// 	// post image
+	var asdf = {
+			"user_email": "cow@gmail.com",
+			"user_name": "cow",
+			"latitude": "40.20",
+			"longitude": "-105.9",
+			"specie": "Cow",
+			"description": "MOOOOOOOOO!",
+			"image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bobcat2.jpg"
+		}
+		// 	//this is called in background sync
+		// 	// post image
+
+
+	let formData = new FormData()
+	formData.append("image", imageMessage)
+	// formData.append("method", "POST")
+
+	// var objectURL = URL.createObjectURL(imageMessage);
+
+
 	var myInit = {
 		method: 'POST',
 		mode: 'cors',
-		body: JSON.stringify(asdf),
+		// body: JSON.stringify(asdf),
+		body: formData,
+
 		// redirect: 'follow',
-		headers: new Headers({
-			'Content-Type': 'application/json'
-		})
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+		}
 	};
-	fetch('https://wildlife-backend.herokuapp.com/posts', myInit).then(function(data) {
+	fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(data) {
 		console.log(data)
 	}, function(data) {
 		console.log(data)
