@@ -71,7 +71,8 @@ self.addEventListener('activate', (e) => {
 	return self.clients.claim();
 })
 
-
+// TODO: SERVICE WORKER GOES OFF AND ON SO GLOBAL VARIABLE WILL BE GONE
+// INSTEAD OF GLOBAL VARIABLE, STORE WITH LOCAL FORAGE, THEN GET IT OUT IN POST IMAGE FUNCTION
 var imageMessage;
 
 self.addEventListener('message', function(event) {
@@ -82,39 +83,17 @@ self.addEventListener('message', function(event) {
 });
 
 
+//this is called in background sync
 function postImage() {
-
-	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON')
-	console.log("IMAGE MESSAGE IN POSTIMAGE FUNCTION: " + imageMessage)
-
-
-	var asdf = {
-			"user_email": "cow@gmail.com",
-			"user_name": "cow",
-			"latitude": "40.20",
-			"longitude": "-105.9",
-			"specie": "Cow",
-			"description": "MOOOOOOOOO!",
-			"image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bobcat2.jpg"
-		}
-		// 	//this is called in background sync
-		// 	// post image
-
+	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON' + imageMessage)
 
 	let formData = new FormData()
 	formData.append("image", imageMessage)
-	// formData.append("method", "POST")
-
-	// var objectURL = URL.createObjectURL(imageMessage);
-
 
 	var myInit = {
 		method: 'POST',
 		mode: 'cors',
-		// body: JSON.stringify(asdf),
 		body: formData,
-
-		// redirect: 'follow',
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
 		}
@@ -124,16 +103,12 @@ function postImage() {
 	}, function(data) {
 		console.log(data)
 	});
-
-
 }
 
 
 
 self.addEventListener('sync', function(e) {
-	console.log('SYNCT')
-	console.log(e)
-
+	console.log('SW SYNC')
 	if (e.tag === 'image-post') {
 		e.waitUntil(postImage());
 	}
@@ -143,17 +118,16 @@ self.addEventListener('sync', function(e) {
 
 self.addEventListener('fetch', function(e) {
 
-	// requesting posts / data from backend
-	// this is 1 of 2 requets being made, this request to the backend, there is another request being made to the cache in the postservice
 	var dataUrl = 'https://wildlife-backend.herokuapp.com/posts';
 	var imageUrl = 'https://wildlife-backend.herokuapp.com/posts/image';
 
+	// requesting posts / data from backend
+	// this is 1 of 2 requeSts being made, this request to the backend, there is another request being made to the cache in the postservice
 	if (e.request.url == dataUrl) {
 		e.respondWith(
 			caches.open(dataCacheName).then(cache => {
 				// get response from network
 				return fetch(e.request).then(response => {
-					console.log(e.request, response)
 						// put request url and clone of response from network in cache
 					cache.put(e.request.url, response.clone())
 						// return network response
@@ -161,22 +135,16 @@ self.addEventListener('fetch', function(e) {
 				})
 			})
 		)
-
+		// post to image backend
 	} else if (e.request.url == imageUrl) {
-
 		const clonedRequest = e.request.clone()
 		e.respondWith(fetch(e.request)
 			.catch(error => {
-
-				const url = new URL(e.request.url)
-				return clonedRequest.text().then(body => {
-					return localforage.setItem(url.toString(), body)
-				})
-
+				console.log(error)
+				return error
 			})
-
-			// app is asking for app shell, so use cache with network as fallback
 		)
+	// app is asking for app shell, so use cache with network as fallback
 	} else {
 		e.respondWith(
 			caches.match(e.request).then(function(response) {
