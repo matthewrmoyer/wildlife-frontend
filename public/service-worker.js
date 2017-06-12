@@ -98,7 +98,7 @@ function postImage() {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
 		}
 	};
-	fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(data) {
+	return fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(data) {
 		console.log(data)
 	}, function(data) {
 		console.log(data)
