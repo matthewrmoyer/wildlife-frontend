@@ -110,11 +110,7 @@ function postImage() {
 self.addEventListener('sync', function(e) {
 	console.log('SW SYNC')
 	if (e.tag === 'image-post') {
-
-		setTimeout(function() {
-			e.waitUntil(postImage());
-
-		}, 3000);
+		e.waitUntil(postImage());
 	}
 });
 
@@ -129,26 +125,26 @@ self.addEventListener('fetch', function(e) {
 	// this is 1 of 2 requeSts being made, this request to the backend, there is another request being made to the cache in the postservice
 	if (e.request.url == dataUrl) {
 		e.respondWith(
-				caches.open(dataCacheName).then(cache => {
-					// get response from network
-					return fetch(e.request).then(response => {
+			caches.open(dataCacheName).then(cache => {
+				// get response from network
+				return fetch(e.request).then(response => {
 						// put request url and clone of response from network in cache
-						cache.put(e.request.url, response.clone())
-							// return network response
-						return response
-					})
+					cache.put(e.request.url, response.clone())
+						// return network response
+					return response
 				})
-			)
-			// post to image backend
+			})
+		)
+		// post to image backend
 	} else if (e.request.url == imageUrl) {
 		const clonedRequest = e.request.clone()
 		e.respondWith(fetch(e.request)
-				.catch(error => {
-					console.log(error)
-					return error
-				})
-			)
-			// app is asking for app shell, so use cache with network as fallback
+			.catch(error => {
+				console.log(error)
+				return error
+			})
+		)
+	// app is asking for app shell, so use cache with network as fallback
 	} else {
 		e.respondWith(
 			caches.match(e.request).then(function(response) {
