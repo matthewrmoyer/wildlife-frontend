@@ -12,45 +12,32 @@
 		vm.specieArray = postsService.specieArray
 		vm.newPost;
 		vm.displayNewSpecieInput = false;
-
 		vm.userLatitude
 		vm.userLongitude
 		vm.getUserLocation = getUserLocation
 		vm.setUserLocation = setUserLocation
-
 		vm.hideNewSpecieInput = hideNewSpecieInput
 		vm.showNewSpecieInput = showNewSpecieInput
 		vm.getSelectedSpecie = getSelectedSpecie
-
 		vm.submitPost = submitPost
-
 		vm.postImage = postsService.postImage
 		vm.postedImageId = postsService.postedImageId
-
 		vm.createNewPost = createNewPost
 		vm.sendNewPost = postsService.sendNewPost
-
-
-
 		vm.goBackToPreviousView = goBackToPreviousView
-
 		vm.messageObject = postsService.messageObject
-
 		vm.updateLocationFromUserInput = updateLocationFromUserInput
-
-
-
-
 		vm.getDescription = getDescription
-
-
 		vm.x = new Image()
 		vm.x.src = '../images/icons/icon-128x128.png'
+
+
+		vm.updateSpecieFromUserInput = updateSpecieFromUserInput
+
 
 		vm.$onInit = function() {
 			console.log('new post controller init')
 			vm.getUserLocation()
-
 			document.getElementById('new-post-submit').addEventListener('click', () => {
 				navigator.serviceWorker.ready.then(function(swRegistration) {
 					console.log('REGISTER SYNC FROM NEW POST CONTROLLER')
@@ -74,8 +61,6 @@
 			} else {
 				vm.hideNewSpecieInput()
 			}
-
-			vm.messageObject.specie = vm.newPost.specie
 		}
 
 		function getUserLocation() {
@@ -87,16 +72,11 @@
 		function setUserLocation(position) {
 			vm.userLatitude = position.coords.latitude
 			vm.userLongitude = position.coords.longitude
-
 			vm.messageObject.latitude = position.coords.latitude
 			vm.messageObject.longitude = position.coords.longitude
-
-
 			console.log(vm.userLatitude)
 			console.log(vm.userLongitude)
 		}
-
-
 
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
@@ -119,7 +99,6 @@
 
 		function getDescription() {
 			vm.messageObject.description = vm.newPost.description
-
 		}
 
 		function goBackToPreviousView() {
@@ -130,6 +109,9 @@
 			vm.messageObject.latitude = vm.userLatitude
 			vm.messageObject.longitude = vm.userLongitude
 		}
-	}
 
+		function updateSpecieFromUserInput() {
+			vm.messageObject.specie = vm.newPost.specie
+		}
+	}
 })()
