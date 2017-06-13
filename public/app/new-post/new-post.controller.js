@@ -97,7 +97,7 @@
 			var img = document.getElementById('newPostPhotoInput').files[0]
 			vm.postImage(img)
 				.then(vm.createNewPost)
-				.then(vm.goBackToPreviousView)
+				// .then(vm.goBackToPreviousView)
 		}
 
 		function createNewPost() {

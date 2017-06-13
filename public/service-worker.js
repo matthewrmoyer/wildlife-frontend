@@ -84,10 +84,10 @@ self.addEventListener('message', function(event) {
 	imageMessage = event.data.image
 	console.log(messageObject)
 
-	objectToPost.user_email = messageObject.user_email
-	objectToPost.user_name = messageObject.user_name
-	objectToPost.latitude = messageObject.latitude
-	objectToPost.longitude = messageObject.longitude
+	objectToPost.user_email = "testemail"
+	objectToPost.user_name = "testname"
+	objectToPost.latitude = messageObject.latitude.toString()
+	objectToPost.longitude = messageObject.longitude.toString()
 	objectToPost.specie = messageObject.specie
 	objectToPost.description = messageObject.description
 
@@ -121,7 +121,7 @@ function postImage() {
 			console.log(data)
 
 			var baseUrl = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/'
-			objectToPost.image_url =  baseUrl + data
+			objectToPost.image_url = baseUrl + data
 			console.log(objectToPost)
 		})
 	}, function(data) {
@@ -129,13 +129,51 @@ function postImage() {
 	});
 }
 
+var fo = {
+	"user_email": "cow@gmail.com",
+	"user_name": "cow",
+	"latitude": "40.20",
+	"longitude": "-105.9",
+	"specie": "Cow",
+	"description": "MOOOOOOOOO!",
+	"image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bobcat2.jpg"
+}
+
+function postObject() {
+
+	var myPostObject = {
+		method: 'POST',
+		mode: 'cors',
+
+		body: JSON.stringify(fo),
+		headers: new Headers({
+			'Content-Type': 'application/json'
+		})
+
+	};
+	return fetch('https://wildlife-backend.herokuapp.com/posts', myPostObject).then(function(response) {
+		console.log(response)
+		console.log(myPostObject)
+		var rc = response.clone()
+
+		rc.json().then(data => {
+			// data = end of image url
+			console.log(data)
+		})
+	}, function(response) {
+		console.log(response)
+	})
+}
+
 
 
 self.addEventListener('sync', function(e) {
 	console.log('SW SYNC')
 	if (e.tag === 'image-post') {
-		e.waitUntil(postImage());
+		e.waitUntil(postImage())
 	}
+	postObject()
+
 });
 
 
