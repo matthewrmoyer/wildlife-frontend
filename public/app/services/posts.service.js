@@ -82,20 +82,20 @@
 
 			vm.sendMessageToSW(vm.messageObject)
 
-			return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
-				headers: {
-					"Content-Type": undefined
-				},
-				transformRequest: angular.identity
-			}).then(function successCallback(response) {
-				vm.postedImageId = response.data
-				console.log(response)
-				console.log(vm.postedImageId)
-			}, function errorCallback(response) {
-				console.log("ERROR")
-			}).then(function() {
-				console.log('99999999999999999999999')
-			})
+			// return $http.post('https://wildlife-backend.herokuapp.com/posts/image', formData, {
+			// 	headers: {
+			// 		"Content-Type": undefined
+			// 	},
+			// 	transformRequest: angular.identity
+			// }).then(function successCallback(response) {
+			// 	vm.postedImageId = response.data
+			// 	console.log(response)
+			// 	console.log(vm.postedImageId)
+			// }, function errorCallback(response) {
+			// 	console.log("ERROR")
+			// }).then(function() {
+			// 	console.log('99999999999999999999999')
+			// })
 		}
 
 		function sendNewPost(objToPost) {

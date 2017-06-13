@@ -22,7 +22,7 @@
 		vm.submitPost = submitPost
 		vm.postImage = postsService.postImage
 		vm.postedImageId = postsService.postedImageId
-		vm.createNewPost = createNewPost
+		// vm.createNewPost = createNewPost
 		vm.sendNewPost = postsService.sendNewPost
 		vm.goBackToPreviousView = goBackToPreviousView
 		vm.messageObject = postsService.messageObject
@@ -81,21 +81,21 @@
 		function submitPost() {
 			var img = document.getElementById('newPostPhotoInput').files[0]
 			vm.postImage(img)
-				.then(vm.createNewPost)
-				.then(vm.goBackToPreviousView)
+				// .then(vm.createNewPost)
+			vm.goBackToPreviousView()
 		}
 
-		function createNewPost() {
-			var objToPost = {}
-			objToPost.user_email = localStorage.getItem("userEmail")
-			objToPost.user_name = localStorage.getItem("userEmail")
-			objToPost.latitude = vm.userLatitude
-			objToPost.longitude = vm.userLongitude
-			objToPost.specie = vm.newPost.specie
-			objToPost.description = vm.newPost.description
-			objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId
-			vm.sendNewPost(objToPost)
-		}
+		// function createNewPost() {
+		// 	var objToPost = {}
+		// 	objToPost.user_email = localStorage.getItem("userEmail")
+		// 	objToPost.user_name = localStorage.getItem("userEmail")
+		// 	objToPost.latitude = vm.userLatitude
+		// 	objToPost.longitude = vm.userLongitude
+		// 	objToPost.specie = vm.newPost.specie
+		// 	objToPost.description = vm.newPost.description
+		// 	objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId
+		// 	vm.sendNewPost(objToPost)
+		// }
 
 		function getDescription() {
 			vm.messageObject.description = vm.newPost.description

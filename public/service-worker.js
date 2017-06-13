@@ -90,11 +90,14 @@ self.addEventListener('message', function(event) {
 	objectToPost.specie = messageObject.specie
 	objectToPost.description = messageObject.description
 	objectToPost.image_url; //get url from postimage function
+
+	postImage()
 });
 
 
 //this is called in background sync
 function postImage() {
+	if(!imageMessage){return}
 	console.log('POST IMAGE FUNCTION CALLED FROM SYNC EVENT ON SUBMIT BUTTON' + imageMessage)
 
 	let formData = new FormData()
@@ -120,7 +123,7 @@ function postImage() {
 			console.log(objectToPost.image_url)
 			console.log(objectToPost)
 			postObject()
-
+			imageMessage = null
 		})
 	}, function(data) {
 		console.log(data)
