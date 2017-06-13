@@ -82,7 +82,6 @@ self.addEventListener('message', function(event) {
 	console.log("SW Received Message: " + event.data);
 	messageObject = event.data
 	imageMessage = event.data.image
-	console.log(messageObject)
 
 	objectToPost.user_email = messageObject.user_email
 	objectToPost.user_name = messageObject.user_name
@@ -90,11 +89,7 @@ self.addEventListener('message', function(event) {
 	objectToPost.longitude = messageObject.longitude.toString()
 	objectToPost.specie = messageObject.specie
 	objectToPost.description = messageObject.description
-
-	// get url from postimage function
-	objectToPost.image_url;
-
-
+	objectToPost.image_url; //get url from postimage function
 });
 
 
