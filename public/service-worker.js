@@ -145,7 +145,7 @@ function postObject() {
 		method: 'POST',
 		mode: 'cors',
 
-		body: JSON.stringify(fo),
+		body: JSON.stringify(objectToPost),
 		headers: new Headers({
 			'Content-Type': 'application/json'
 		})
