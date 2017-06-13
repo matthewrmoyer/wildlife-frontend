@@ -40,8 +40,10 @@
 			domain: 'matthewrmoyer.auth0.com',
 			responseType: 'token id_token',
 			audience: 'https://matthewrmoyer.auth0.com/userinfo',
-			redirectUri: 'https://wildlife-e6355.firebaseapp.com/profile',
-			scope: 'openid profile email'
+			redirectUri: 'http://localhost:3000/profile',
+			scope: 'openid profile email',
+			leeway: 60
+
 		});
 
 		$urlRouterProvider.otherwise('/');
