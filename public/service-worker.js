@@ -84,8 +84,8 @@ self.addEventListener('message', function(event) {
 	imageMessage = event.data.image
 	console.log(messageObject)
 
-	objectToPost.user_email = "testemail"
-	objectToPost.user_name = "testname"
+	objectToPost.user_email = "EMAIL"
+	objectToPost.user_name = "NAMEEE"
 	objectToPost.latitude = messageObject.latitude.toString()
 	objectToPost.longitude = messageObject.longitude.toString()
 	objectToPost.specie = messageObject.specie
@@ -122,7 +122,10 @@ function postImage() {
 
 			var baseUrl = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/'
 			objectToPost.image_url = baseUrl + data
+			console.log(objectToPost.image_url)
 			console.log(objectToPost)
+			postObject()
+
 		})
 	}, function(data) {
 		console.log(data)
@@ -172,8 +175,6 @@ self.addEventListener('sync', function(e) {
 	if (e.tag === 'image-post') {
 		e.waitUntil(postImage())
 	}
-	postObject()
-
 });
 
 
