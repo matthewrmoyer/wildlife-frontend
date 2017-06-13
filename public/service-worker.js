@@ -116,7 +116,7 @@ function postImage() {
 	return fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(response) {
 		console.log(response)
 		var rc = response.clone()
-		rc.text().then(data => {
+		rc.json().then(data => {
 			// data = end of image url
 			console.log(data)
 
