@@ -83,8 +83,8 @@ self.addEventListener('message', function(event) {
 	messageObject = event.data
 	imageMessage = event.data.image
 
-	objectToPost.user_email = messageObject.user_email
-	objectToPost.user_name = messageObject.user_name
+	objectToPost.user_email = messageObject.user_email || 'Anonymous Email'
+	objectToPost.user_name = messageObject.user_name || 'Anonymous'
 	objectToPost.latitude = messageObject.latitude.toString()
 	objectToPost.longitude = messageObject.longitude.toString()
 	objectToPost.specie = messageObject.specie
