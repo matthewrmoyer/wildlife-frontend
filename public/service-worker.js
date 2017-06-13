@@ -76,11 +76,25 @@ self.addEventListener('activate', (e) => {
 var imageMessage;
 var messageObject
 
+var objectToPost = {}
+
 self.addEventListener('message', function(event) {
 	console.log("SW Received Message: " + event.data);
 	messageObject = event.data
 	imageMessage = event.data.image
 	console.log(messageObject)
+
+	objectToPost.user_email = messageObject.user_email
+	objectToPost.user_name = messageObject.user_name
+	objectToPost.latitude = messageObject.latitude
+	objectToPost.longitude = messageObject.longitude
+	objectToPost.specie = messageObject.specie
+	objectToPost.description = messageObject.description
+
+	// get url from postimage function
+	objectToPost.image_url;
+
+
 });
 
 
@@ -103,7 +117,12 @@ function postImage() {
 		console.log(response)
 		var rc = response.clone()
 		rc.text().then(data => {
+			// data = end of image url
 			console.log(data)
+
+			var baseUrl = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/'
+			objectToPost.image_url =  baseUrl + data
+			console.log(objectToPost)
 		})
 	}, function(data) {
 		console.log(data)
@@ -130,18 +149,18 @@ self.addEventListener('fetch', function(e) {
 	// this is 1 of 2 requeSts being made, this request to the backend, there is another request being made to the cache in the postservice
 	if (e.request.url == dataUrl) {
 		e.respondWith(
-			caches.open(dataCacheName).then(cache => {
-				// get response from network
-				return fetch(e.request).then(response => {
+				caches.open(dataCacheName).then(cache => {
+					// get response from network
+					return fetch(e.request).then(response => {
 						// put request url and clone of response from network in cache
-					cache.put(e.request.url, response.clone())
-						// return network response
-					return response
+						cache.put(e.request.url, response.clone())
+							// return network response
+						return response
+					})
 				})
-			})
-		)
-		// post to image backend
-	} 
+			)
+			// post to image backend
+	}
 
 	// else if (e.request.url == imageUrl) {
 	// 	const clonedRequest = e.request.clone()
@@ -153,7 +172,6 @@ self.addEventListener('fetch', function(e) {
 	// 	)
 	// // app is asking for app shell, so use cache with network as fallback
 	// } 
-
 	else {
 		e.respondWith(
 			caches.match(e.request).then(function(response) {
