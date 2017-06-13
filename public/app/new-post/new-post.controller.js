@@ -36,6 +36,11 @@
 
 		vm.messageObject = postsService.messageObject
 
+		vm.updateLocationFromUserInput = updateLocationFromUserInput
+
+
+
+
 		vm.getDescription = getDescription
 
 
@@ -119,6 +124,11 @@
 
 		function goBackToPreviousView() {
 			history.back()
+		}
+
+		function updateLocationFromUserInput() {
+			vm.messageObject.latitude = vm.userLatitude
+			vm.messageObject.longitude = vm.userLongitude
 		}
 	}
 

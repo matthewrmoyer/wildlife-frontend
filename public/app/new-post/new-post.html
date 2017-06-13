@@ -12,8 +12,8 @@
 		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
 		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description" ng-change="$ctrl.getDescription()"></textarea>
 		<div class = "lat-long-container">
-			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" placeholder="Your Latitude">
-			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" placeholder="Your Longitude">
+			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Latitude">
+			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Longitude">
 		</div>
 		<input name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
 
