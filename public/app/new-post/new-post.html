@@ -7,7 +7,7 @@
 			<option disabled value="">Select Specie</option>
 			<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 		</select>
-		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
+		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" ng-change="$ctrl.getSelectedSpecie()"" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
 		>
 		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
 		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description" ng-change="$ctrl.getDescription()"></textarea>
