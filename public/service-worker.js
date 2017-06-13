@@ -80,8 +80,6 @@ self.addEventListener('message', function(event) {
 	console.log("SW Received Message: " + event.data);
 	messageObject = event.data
 	imageMessage = event.data.image
-	console.log(imageMessage)
-	console.log(typeof imageMessage)
 	console.log(messageObject)
 });
 
@@ -101,8 +99,12 @@ function postImage() {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
 		}
 	};
-	return fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(data) {
-		console.log(data)
+	return fetch('https://wildlife-backend.herokuapp.com/posts/image', myInit).then(function(response) {
+		console.log(response)
+		var rc = response.clone()
+		rc.text().then(data => {
+			console.log(data)
+		})
 	}, function(data) {
 		console.log(data)
 	});
@@ -139,16 +141,20 @@ self.addEventListener('fetch', function(e) {
 			})
 		)
 		// post to image backend
-	} else if (e.request.url == imageUrl) {
-		const clonedRequest = e.request.clone()
-		e.respondWith(fetch(e.request)
-			.catch(error => {
-				console.log(error)
-				return error
-			})
-		)
-	// app is asking for app shell, so use cache with network as fallback
-	} else {
+	} 
+
+	// else if (e.request.url == imageUrl) {
+	// 	const clonedRequest = e.request.clone()
+	// 	e.respondWith(fetch(e.request)
+	// 		.catch(error => {
+	// 			console.log(error)
+	// 			return error
+	// 		})
+	// 	)
+	// // app is asking for app shell, so use cache with network as fallback
+	// } 
+
+	else {
 		e.respondWith(
 			caches.match(e.request).then(function(response) {
 				return response || fetch(e.request);

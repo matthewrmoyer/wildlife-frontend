@@ -87,6 +87,7 @@
 				transformRequest: angular.identity
 			}).then(function successCallback(response) {
 				vm.postedImageId = response.data
+				console.log(response)
 				console.log(vm.postedImageId)
 			}, function errorCallback(response) {
 				console.log("ERROR")
