@@ -55,6 +55,13 @@
 		}
 
 		function getSelectedSpecie() {
+			console.log(vm.newPost.specie)
+
+			vm.messageObject.specie = vm.newPost.specie
+
+			console.log(postsService.messageObject.specie)
+
+
 			if (!vm.newPost.specie) {
 				console.log('asdfasdf')
 				vm.showNewSpecieInput()
@@ -85,18 +92,6 @@
 			vm.goBackToPreviousView()
 		}
 
-		// function createNewPost() {
-		// 	var objToPost = {}
-		// 	objToPost.user_email = localStorage.getItem("userEmail")
-		// 	objToPost.user_name = localStorage.getItem("userEmail")
-		// 	objToPost.latitude = vm.userLatitude
-		// 	objToPost.longitude = vm.userLongitude
-		// 	objToPost.specie = vm.newPost.specie
-		// 	objToPost.description = vm.newPost.description
-		// 	objToPost.image_url = 'https://s3-us-west-2.amazonaws.com/wildlifeimagebucket/' + postsService.postedImageId
-		// 	vm.sendNewPost(objToPost)
-		// }
-
 		function getDescription() {
 			vm.messageObject.description = vm.newPost.description
 		}
@@ -112,6 +107,7 @@
 
 		function updateSpecieFromUserInput() {
 			vm.messageObject.specie = vm.newPost.specie
+			console.log(postsService.messageObject.specie)
 		}
 	}
 })()
