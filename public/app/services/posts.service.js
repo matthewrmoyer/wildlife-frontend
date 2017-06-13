@@ -24,6 +24,8 @@
 
 		vm.messageObject = {}
 
+		vm.getMarkers = getMarkers
+
 
 		// cache logic
 		if ('caches' in window) {
@@ -106,6 +108,22 @@
 
 		function sendMessageToSW(msg) {
 			navigator.serviceWorker.controller.postMessage(msg);
+		}
+
+		function getMarkers() {
+			$http.get(vm.allPostsUrl)
+				.then((response) => {
+					response.data.forEach(element => {
+						vm.posts.push(element)
+						vm.specieSet.add(element.specie)
+					})
+				}, function() {
+					console.log('Error Getting Posts')
+				}).then(function() {
+					vm.specieSet.forEach(element => {
+						vm.specieArray.push(element)
+					})
+				})
 		}
 	}
 })()

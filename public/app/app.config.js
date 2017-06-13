@@ -43,7 +43,6 @@
 			redirectUri: 'http://localhost:3000/profile',
 			scope: 'openid profile email',
 			leeway: 60
-
 		});
 
 		$urlRouterProvider.otherwise('/');
