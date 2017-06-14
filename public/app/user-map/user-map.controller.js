@@ -12,13 +12,13 @@
 		const vm = this;
 		// variables
 		vm.auth = authService
-		
+
 		vm.posts = postsService.posts;
 		vm.specieSet = postsService.specieSet
 		vm.specieArray = postsService.specieArray;
 		vm.specieToFilterFor = postsService.specieToFilterFor;
 
-		vm.emailToFilterFor = authService.userProfile.email;
+		vm.emailToFilterFor = '';
 
 		vm.wildlifeMap;
 		vm.wildlifeMapTileLayer;
@@ -38,17 +38,22 @@
 		vm.userMarker;
 		vm.userCircle;
 
-
 		vm.userIcon = L.icon({
 			iconUrl: '../images/user-icon.png',
 			iconSize: [50, 50]
-			// iconAnchor: [0, 0]
-			// popupAnchor:  [-3, -76]
+				// iconAnchor: [0, 0]
+				// popupAnchor:  [-3, -76]
 		})
 
 
 
 		vm.$onInit = function() {
+
+			authService.getProfile(function(err, profile) {
+				vm.emailToFilterFor = profile.email
+			})
+
+
 			console.log(vm.posts)
 			console.log(vm.specieSet)
 			console.log(vm.specieArray)
@@ -66,7 +71,7 @@
 				accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 			}).addTo(vm.wildlifeMap);
 			vm.wildlifeMap.zoomControl.setPosition('bottomleft')
-			// add allMarkerGroup to map
+				// add allMarkerGroup to map
 			displayMarkerGroup(vm.allMarkerGroup, vm.wildlifeMap)
 				// vm.watchPosition;
 		}
@@ -116,7 +121,9 @@
 			vm.userLongitude = position.coords.longitude;
 			console.log(vm.userLongitude)
 
-			vm.userMarker = L.marker([position.coords.latitude, position.coords.longitude], {icon: vm.userIcon})
+			vm.userMarker = L.marker([position.coords.latitude, position.coords.longitude], {
+					icon: vm.userIcon
+				})
 				.bindPopup("Your Location");
 
 			vm.userCircle = L.circle([position.coords.latitude, position.coords.longitude], {

@@ -19,6 +19,7 @@
 				vm.userProfile = authService.getCachedProfile();
 			} else {
 				authService.getProfile(function(err, profile) {
+					console.log(profile)
 					vm.userProfile = profile;
 				});
 			}
