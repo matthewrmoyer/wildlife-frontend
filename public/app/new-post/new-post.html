@@ -7,15 +7,21 @@
 			<option disabled value="">Select Specie</option>
 			<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
 		</select>
+
 		<input ng-show="$ctrl.displayNewSpecieInput" ng-model = "$ctrl.newPost.specie" ng-change="$ctrl.updateSpecieFromUserInput()"" name = "newPostSpecieTextInput" id = "new-specie-input" type="text" placeholder= "New Specie"
 		>
+
 		<input ng-model = "$ctrl.newPost.trail" name = "newPostTrailInput" placeholder="Trail (Optional)" type="text">
-		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description" ng-change="$ctrl.getDescription()"></textarea>
+
+		<textarea id = "newPostFormDescriptionTextArea" name="newPostDescriptionTextArea" ng-model="$ctrl.newPost.description" placeholder="Description" ng-change="$ctrl.getDescription()" ng-class="{'form-error': $ctrl.newPostForm.newPostDescriptionTextArea.$invalid && $ctrl.newPostForm.newPostDescriptionTextArea.$touched}" required></textarea>
+
 		<div class = "lat-long-container">
-			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Latitude">
-			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Longitude">
+			<input type="text" name = "newPostLatitudeInput" ng-model = "$ctrl.userLatitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Latitude" ng-class="{'form-error': $ctrl.newPostForm.newPostLatitudeInput.$invalid && $ctrl.newPostForm.newPostLatitudeInput.$touched}" required>
+
+			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Longitude" ng-class="{'form-error': $ctrl.newPostForm.newPostLongitudeInput.$invalid && $ctrl.newPostForm.newPostLongitudeInput.$touched}"  required>
 		</div>
-		<input name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" >
+
+		<input name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" ng-class="{'form-error': $ctrl.newPostForm.newPostPhotoInput.$invalid && $ctrl.newPostForm.newPostPhotoInput.$touched}" required>
 
 		<input type="submit" id="new-post-submit" value="Submit" />
 

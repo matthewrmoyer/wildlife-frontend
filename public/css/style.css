@@ -218,4 +218,8 @@
 .display-none-class {
   display: none; }
 
+.form-error {
+  border: 2px solid red !important;
+  border-style: solid  !important; }
+
 /*# sourceMappingURL=style.css.map */

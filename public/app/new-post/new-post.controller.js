@@ -5,9 +5,9 @@
 			controller: ('NewPostController', NewPostController),
 			templateUrl: './app/new-post/new-post.html'
 		})
-	NewPostController.$inject = ['postsService']
+	NewPostController.$inject = ['postsService', 'authService']
 
-	function NewPostController(postsService) {
+	function NewPostController(postsService, authService) {
 		const vm = this;
 		vm.specieArray = postsService.specieArray
 		vm.newPost;
