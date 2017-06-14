@@ -34,6 +34,9 @@
 
 		vm.updateSpecieFromUserInput = updateSpecieFromUserInput
 
+		vm.img
+		vm.setImage = setImage
+
 
 		vm.$onInit = function() {
 			console.log('new post controller init')
@@ -86,10 +89,15 @@
 		}
 
 		function submitPost() {
-			var img = document.getElementById('newPostPhotoInput').files[0]
-			vm.postImage(img)
+			vm.setImage()
+			console.log(vm.img)
+			vm.postImage(vm.img)
 				// .then(vm.createNewPost)
 			vm.goBackToPreviousView()
+		}
+
+		function setImage() {
+			 vm.img = document.getElementById('newPostPhotoInput').files[0]
 		}
 
 		function getDescription() {

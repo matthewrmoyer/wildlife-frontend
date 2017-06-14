@@ -69,6 +69,8 @@
 
 		function postImage(img) {
 			console.log('postsService POSTINMAGE FHCTIUON')
+			console.log('img in service')
+			console.log(img)
 
 			let formData = new FormData()
 			formData.append("image", img)
