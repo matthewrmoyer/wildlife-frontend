@@ -14,6 +14,11 @@
 		vm.userProfile = authService.userProfile;
 
 		vm.$onInit = function() {
+
+
+			authService.getProfile(function(err, profile) {
+				vm.emailToFilterFor = profile.email
+			})
 			console.log('profile-state init')
 			if (authService.getCachedProfile()) {
 				vm.userProfile = authService.getCachedProfile();

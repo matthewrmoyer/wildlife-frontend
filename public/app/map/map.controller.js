@@ -46,6 +46,9 @@
 			console.log(vm.specieSet)
 			vm.generateMap()
 			vm.getAndWatchUserLocation(vm.showPosition)
+			authService.getProfile(function(err, profile) {
+				vm.emailToFilterFor = profile.email
+			})
 		}
 
 		function generateMap() {
@@ -123,5 +126,5 @@
 			}
 		}
 	}
-	
+
 })()

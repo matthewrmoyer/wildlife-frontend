@@ -22,7 +22,7 @@
 		vm.submitPost = submitPost
 		vm.postImage = postsService.postImage
 		vm.postedImageId = postsService.postedImageId
-		// vm.createNewPost = createNewPost
+			// vm.createNewPost = createNewPost
 		vm.sendNewPost = postsService.sendNewPost
 		vm.goBackToPreviousView = goBackToPreviousView
 		vm.messageObject = postsService.messageObject
@@ -47,6 +47,9 @@
 					return swRegistration.sync.register('image-post');
 				});
 			});;
+			authService.getProfile(function(err, profile) {
+				vm.emailToFilterFor = profile.email
+			})
 		}
 
 		function hideNewSpecieInput() {
@@ -97,7 +100,7 @@
 		}
 
 		function setImage() {
-			 vm.img = document.getElementById('newPostPhotoInput').files[0]
+			vm.img = document.getElementById('newPostPhotoInput').files[0]
 		}
 
 		function getDescription() {
