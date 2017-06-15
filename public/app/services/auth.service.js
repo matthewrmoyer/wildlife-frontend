@@ -31,7 +31,7 @@
           $state.go('home');
         } else if (err) {
           $timeout(function() {
-            $state.go('map');
+            $state.reload();
             return
           });
           console.log(err);
