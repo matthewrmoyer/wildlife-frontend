@@ -31,9 +31,10 @@
           $state.go('home');
         } else if (err) {
           $timeout(function() {
-            $state.go('home');
+            // $state.go('home');
+            return
           });
-          // console.log(err);
+          console.log(err);
           // alert('Error: ' + err.error + '. Check the console for further details.');
         }
       });
