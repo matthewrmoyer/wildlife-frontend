@@ -49,9 +49,13 @@
 
 		vm.$onInit = function() {
 
-			authService.getProfile(function(err, profile) {
-				vm.emailToFilterFor = profile.email
-			})
+
+				// this works after refresh
+		vm.emailToFilterFor = authService.userProfile.email; 
+
+			// authService.getProfile(function(err, profile) {
+			// 	vm.emailToFilterFor = profile.email
+			// })
 
 
 			console.log(vm.posts)
