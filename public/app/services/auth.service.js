@@ -31,7 +31,7 @@
           $state.go('home');
         } else if (err) {
           $timeout(function() {
-            // $state.go('home');
+            $state.go('profile');
             return
           });
           console.log(err);
