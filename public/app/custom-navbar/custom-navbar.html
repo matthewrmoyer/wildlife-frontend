@@ -1,0 +1,37 @@
+<div class = "custom-navbar-container">
+	<div class= "custom-navbar col-xs-12">
+
+		<div class="custom-navbar-item new-post-link-item">
+			<div class = "custom-navbar-location-button-container">
+				<a ui-sref = "newPost">
+					<i class="material-icons">add</i>
+				</a>
+			</div>
+		</div>
+
+		
+		<div class="custom-navbar-item select-item">
+			<select class = "custom-navbar-select" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)">
+				<option value="">All</option>
+				<option ng-repeat="specie in $ctrl.specieArray">{{specie}}</option>
+			</select>
+		</div>
+		<div class="custom-navbar-item">
+			<div class="custom-navbar-profile-link-container">
+				<a ui-sref="profile">
+					<i class="material-icons">person</i>
+				</a>
+			</div>
+		</div>
+		<div class="custom-navbar-item">
+			<a ui-sref="map">
+				<i class="material-icons">map</i>
+			</a>
+		</div>
+		<div class="custom-navbar-item location-item">
+			<div class = "custom-navbar-location-button-container" ng-click="$ctrl.centerOnUser()">
+				<i class="material-icons">my_location</i>
+			</div>
+		</div>
+	</div>
+</div>
