@@ -356,13 +356,10 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .6);
 
 }
 .custom-navbar-item {
-  		user-select: none;
-	
-	// background-color: orange;
+  	user-select: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	// @extend %materialize-button-raised;
 	i {
 		background-color: rgba(255,255,255, .6);
 
@@ -400,9 +397,6 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .6);
   	width: $custom-navbar-item-height;
 	height: $custom-navbar-item-height;
   	overflow: hidden;
-  	//box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-		// background-color: rgba(255,255,255, .6);
-
 }
 
 .custom-navbar-new-post-link-container{
@@ -423,7 +417,6 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .6);
 		min-width: calc(100px + 4vw);
   		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
 
 
 // manipulator classes
