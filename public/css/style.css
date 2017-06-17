@@ -233,16 +233,19 @@
   z-index: 999; }
 
 .custom-navbar-item {
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center; }
   .custom-navbar-item i {
+    background-color: rgba(255, 255, 255, 0.6);
     font-size: calc(20px + 5vw);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
     cursor: pointer; }
 
-.new-post-link-item {
-  box-shadow: none; }
+.new-post-link-item i {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 50%; }
 
 .location-item i {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -257,8 +260,7 @@
   text-align: center;
   width: calc(calc(80px + 4vw) * .6);
   height: calc(calc(80px + 4vw) * .6);
-  overflow: hidden;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6); }
+  overflow: hidden; }
 
 .custom-navbar-new-post-link-container {
   display: flex; }

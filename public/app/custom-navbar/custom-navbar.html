@@ -2,13 +2,14 @@
 	<div class= "custom-navbar col-xs-12">
 
 		<div class="custom-navbar-item new-post-link-item">
-			<div class = "custom-navbar-new-post-link-container-container">
-				<a class = "md-fab custom-navbar-new-post-link-container" ui-sref="newPost">
+			<div class = "custom-navbar-location-button-container">
+				<a ui-sref = "newPost">
 					<i class="material-icons">add</i>
 				</a>
 			</div>
 		</div>
 
+		
 		<div class="custom-navbar-item select-item">
 			<select class = "custom-navbar-select" ng-model="$ctrl.specieToFilterFor" ng-change="$ctrl.removeAllMarkers($ctrl.allMarkerGroup)">
 				<option value="">All</option>
