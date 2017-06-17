@@ -353,6 +353,9 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .6);
 	background-color: rgba(255,255,255,.5);
 	margin-bottom: calc(#{$custom-navbar-height} * -1);
 	z-index: 999;
+	// width: 100vw;
+	padding-right: 5vw;
+	padding-left: 5vw;
 
 }
 .custom-navbar-item {
@@ -414,7 +417,7 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .6);
 		height: $custom-navbar-item-height;
 		text-align-last: center;
 		background-color: white;
-		min-width: calc(100px + 4vw);
+		width: calc(50px + 4vw);
   		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 

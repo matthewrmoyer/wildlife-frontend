@@ -230,7 +230,9 @@
   padding-right: 20px;
   background-color: rgba(255, 255, 255, 0.5);
   margin-bottom: calc(calc(80px + 4vw) * -1);
-  z-index: 999; }
+  z-index: 999;
+  padding-right: 5vw;
+  padding-left: 5vw; }
 
 .custom-navbar-item {
   user-select: none;
@@ -274,7 +276,7 @@
   height: calc(calc(80px + 4vw) * .6);
   text-align-last: center;
   background-color: white;
-  min-width: calc(100px + 4vw);
+  width: calc(50px + 4vw);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
 
 .display-none-class {
