@@ -21,9 +21,13 @@
 			<input type="text" name = "newPostLongitudeInput" ng-model = "$ctrl.userLongitude" ng-change = "$ctrl.updateLocationFromUserInput()" placeholder="Your Longitude" ng-class="{'form-error': $ctrl.newPostForm.newPostLongitudeInput.$invalid && $ctrl.newPostForm.newPostLongitudeInput.$touched}"  required>
 		</div>
 
-		<input name="newPostPhotoInput" id="newPostPhotoInput" type="file" accept="image/*" ng-class="{'form-error': $ctrl.newPostForm.newPostPhotoInput.$invalid && $ctrl.newPostForm.newPostPhotoInput.$touched}" required>
+		<input name="newPostPhotoInput" class = "new-post-photo-input" id="newPostPhotoInput" type="file" accept="image/*" ng-class="{'form-error': $ctrl.newPostForm.newPostPhotoInput.$invalid && $ctrl.newPostForm.newPostPhotoInput.$touched}" required>
+		<label for="newPostPhotoInput">Upload an Image</label>
+
 
 		<input type="submit" id="new-post-submit" value="Submit" />
 
 	</form>
+
+	<br>
 </div>
