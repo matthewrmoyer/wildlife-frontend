@@ -52,14 +52,13 @@
 		}
 
 		function generateMap() {
-			vm.wildlifeMap = L.map('wildlife-map').setView([40.3428, -105.6836], 7);
+			vm.wildlifeMap = L.map('wildlife-map', {zoomControl: false}).setView([40.3428, -105.6836], 7);
 			vm.wildlifeMapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 				// attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 				maxZoom: 18,
 				id: 'mapbox.satellite',
 				accessToken: 'pk.eyJ1IjoibWF0dGhld3Jtb3llciIsImEiOiJjajM2MzA1YWkwNGZ3MndwNm11NGZuNm1jIn0.Gh0P6Glzi5ERnaHcnwDA3A'
 			}).addTo(vm.wildlifeMap);
-			vm.wildlifeMap.zoomControl.setPosition('bottomleft')
 			displayMarkerGroup(vm.allMarkerGroup, vm.wildlifeMap)
 		}
 
