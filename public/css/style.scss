@@ -477,7 +477,8 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 
 .full-opacity {
 	opacity: 1 !important;
-	pointer-events: auto;
+	pointer-events: auto !important;
+	cursor: pointer;
 }
 
 .form-error{

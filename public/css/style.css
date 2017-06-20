@@ -321,7 +321,8 @@
 
 .full-opacity {
   opacity: 1 !important;
-  pointer-events: auto; }
+  pointer-events: auto !important;
+  cursor: pointer; }
 
 .form-error {
   border: 2px solid #ed7379 !important;
