@@ -192,7 +192,8 @@
     opacity: 0;
     overflow: hidden;
     position: absolute;
-    z-index: -1; }
+    z-index: -1;
+    text-shadow: 20px 20px green; }
   .new-post-form .new-post-photo-input + label {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
     font-size: calc(20px + 1vw);
@@ -201,13 +202,18 @@
     color: white;
     background-color: #ed7379;
     cursor: pointer;
-    line-height: 2; }
+    line-height: 2;
+    text-shadow: 0px 0px 1px black; }
   .new-post-form #new-post-submit {
     font-size: calc(20px + 1vw);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
     border: none;
     color: white;
-    background-color: #1ab3c1; }
+    background-color: #1ab3c1;
+    text-shadow: 0px 0px 1px black;
+    opacity: .2;
+    pointer-events: none;
+    user-select: none; }
 
 .profile-container {
   display: flex;
@@ -272,7 +278,7 @@
     font-size: calc(20px + 5vw);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
     cursor: pointer;
-    color: #ed7379; }
+    color: #4193CF; }
 
 .new-post-link-item i {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -312,6 +318,10 @@
 
 .display-none-class {
   display: none; }
+
+.full-opacity {
+  opacity: 1 !important;
+  pointer-events: auto; }
 
 .form-error {
   border: 2px solid #ed7379 !important;

@@ -188,6 +188,7 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 	flex-grow: 1;
 }
 
+
 .location-image{
 	height: calc(#{$wildlife-map-menu-bar-height} - 5px);
 	cursor: pointer;
@@ -306,6 +307,8 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 		overflow: hidden;
 		position: absolute;
 		z-index: -1;
+		text-shadow: 20px 20px green;
+
 	}
 
 	.new-post-photo-input + label {
@@ -317,6 +320,8 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
     	background-color: $red;
     	cursor: pointer;
     	line-height: 2;
+		text-shadow: 0px 0px 1px black;
+
 	}
 
 	#new-post-submit {
@@ -325,6 +330,10 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 		border: none;
 		color: white;
 		background-color: darken($accent-blue, 5);
+		text-shadow: 0px 0px 1px black;
+		opacity: .2;
+		pointer-events: none;
+		user-select: none;
 	}
 }
 
@@ -405,7 +414,7 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 		font-size: calc(20px + 5vw);
   		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.6);
   		cursor: pointer;
-  		color: $red;
+  		color: #4193CF;
 	}
 }
 
@@ -464,6 +473,11 @@ $custom-navbar-item-height: calc(#{$custom-navbar-height} * .5);
 // manipulator classes
 .display-none-class{
 	display: none;
+}
+
+.full-opacity {
+	opacity: 1 !important;
+	pointer-events: auto;
 }
 
 .form-error{

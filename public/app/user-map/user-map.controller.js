@@ -46,6 +46,14 @@
 		})
 
 
+		vm.greenIcon = L.icon({
+			iconUrl: '../images/user-icon.png',
+			iconSize: [50, 50]
+				// iconAnchor: [0, 0]
+				// popupAnchor:  [-3, -76]
+		})
+
+
 
 		vm.$onInit = function() {
 

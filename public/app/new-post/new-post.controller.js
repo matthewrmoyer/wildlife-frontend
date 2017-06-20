@@ -5,9 +5,9 @@
 			controller: ('NewPostController', NewPostController),
 			templateUrl: './app/new-post/new-post.html'
 		})
-	NewPostController.$inject = ['postsService', 'authService']
+	NewPostController.$inject = ['postsService', 'authService', '$scope']
 
-	function NewPostController(postsService, authService) {
+	function NewPostController(postsService, authService, $scope) {
 		const vm = this;
 		vm.specieArray = postsService.specieArray
 		vm.newPost;
@@ -36,6 +36,7 @@
 
 		vm.img
 		vm.setImage = setImage
+		$scope.logImage = logImage
 
 
 		vm.$onInit = function() {
@@ -120,5 +121,13 @@
 			vm.messageObject.specie = vm.newPost.specie
 			console.log(postsService.messageObject.specie)
 		}
+
+		function logImage() {
+			console.log('image uploaded')
+			document.getElementById('image-label').innerHTML = 'Got It!';
+			vm.img = document.getElementById('newPostPhotoInput').files[0]
+			$scope.$apply()
+		}
+
 	}
 })()
